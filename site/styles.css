@@ -161,7 +161,7 @@ details.doc[open] > summary::before { transform: rotate(45deg); }
 .exhibit-num { font-size: 2rem; font-weight: 300; color: var(--haint-ink); line-height: 1; }
 .exhibit-head h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -0.02em; }
 .exhibit-line { grid-column: 2; margin: 0.35rem 0 0; font-size: 1.125rem; max-width: 40rem; }
-.exhibit-body { display: grid; grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
+.exhibit-body { display: grid; grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; align-items: start; }
 .frame { display: block; background: var(--sheet); border: 1px solid var(--rule); padding: 0.6rem; transition: transform 160ms ease; }
 .frame:hover { transform: translateY(-3px); }
 .frame img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); }
