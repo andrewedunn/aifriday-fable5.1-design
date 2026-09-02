@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Friday — New Orleans</title>
+<meta name="description" content="A monthly meetup in New Orleans for people who use AI at work and want to make something with it. Next one: Friday, October 2, 5:30pm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#rsvp">Skip to RSVP</a>
+
+<main>
+
+  <!-- 1. THE INVITATION -->
+  <header class="hero">
+    <h1 class="hero__sign">
+      <picture>
+        <source media="(min-width: 736px)" srcset="assets/sign-hero.png" width="2000" height="667">
+        <img src="assets/sign-hero-tall.png" width="1200" height="900"
+             alt="AI Friday. Friday October 2, 5:30pm. New Orleans.">
+      </picture>
+    </h1>
+
+    <div class="hero__body">
+      <div class="hero__pitch">
+        <p class="lead">A monthly meetup for people in New Orleans who use AI at work and
+          want to make something with it. You don't need to write code. Bring the thing
+          you're stuck on.</p>
+
+        <p class="venue">Venue TBD, New Orleans. We post the room a week ahead.</p>
+
+        <div class="actions">
+          <a class="btn btn--paint" href="#" id="rsvp">RSVP for October&nbsp;2</a>
+          <a class="btn btn--plain" href="#">Join the Slack</a>
+        </div>
+
+        <p class="countdown" id="countdown" hidden></p>
+      </div>
+
+      <aside class="board" aria-labelledby="board-head">
+        <div class="board__inner">
+          <p class="board__head" id="board-head">Friday, October 2</p>
+          <ul class="runsheet">
+            <li><span class="t">5:30</span><span class="dots" aria-hidden="true"></span><span class="w">Doors, name tags, food</span></li>
+            <li><span class="t">6:00</span><span class="dots" aria-hidden="true"></span><span class="w">Three short demos</span></li>
+            <li><span class="t">6:45</span><span class="dots" aria-hidden="true"></span><span class="w">Open floor, ask anything</span></li>
+            <li><span class="t">7:30</span><span class="dots" aria-hidden="true"></span><span class="w">Stay as long as you like</span></li>
+          </ul>
+          <p class="board__foot">Free. Come by yourself, it's fine.</p>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <!-- 2. WHAT THIS IS -->
+  <section class="section section--quiet">
+    <h2 class="signhead signhead--a">
+      <img src="assets/sign-what-this-is.png" width="1400" height="467" loading="lazy" alt="What this is">
+    </h2>
+    <div class="prose">
+      <p>AI Friday is a room in New Orleans where people show each other what they've made
+        with AI. It meets the first Friday of the month. Between meetups it lives in a Slack.</p>
+      <p>Most of us are not developers. There are lawyers here, teachers, nurses, people who
+        run one small business by themselves. The demos are short, the questions are basic on
+        purpose, and nobody is selling anything.</p>
+    </div>
+  </section>
+
+  <!-- 3. WHAT PEOPLE ARE BUILDING -->
+  <section class="section">
+    <h2 class="signhead signhead--b">
+      <img src="assets/sign-specials.png" width="1400" height="467" loading="lazy" alt="Specials">
+    </h2>
+    <p class="section__sub">Four things members made this year.</p>
+
+    <ul class="specials">
+      <li class="special">
+        <p class="special__line">
+          <span class="special__name">Client intake bot</span>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="special__price">2 hrs a week</span>
+        </p>
+        <p class="special__who">Kara, immigration lawyer</p>
+        <p class="special__what">Reads new inquiry emails and drafts the first reply. She still
+          sends every one by hand, but she isn't starting from a blank page.</p>
+      </li>
+      <li class="special">
+        <p class="special__line">
+          <span class="special__name">Lesson builder</span>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="special__price">Sunday night back</span>
+        </p>
+        <p class="special__who">Marcus, seventh grade science</p>
+        <p class="special__what">Turns a state standard into a worksheet, a warm-up, and three
+          questions for the kids who finish early.</p>
+      </li>
+      <li class="special">
+        <p class="special__line">
+          <span class="special__name">Shift filler</span>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="special__price">20 min a shift</span>
+        </p>
+        <p class="special__who">Dana, restaurant general manager</p>
+        <p class="special__what">When somebody calls out, it texts the three people most likely
+          to say yes instead of the whole staff group chat.</p>
+      </li>
+      <li class="special">
+        <p class="special__line">
+          <span class="special__name">Grant sifter</span>
+          <span class="dots" aria-hidden="true"></span>
+          <span class="special__price">6 hrs a month</span>
+        </p>
+        <p class="special__who">Priya, nonprofit director</p>
+        <p class="special__what">Reads every funder announcement that lands in her inbox and
+          flags the two that are actually worth an afternoon.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 4. WHAT YOU WALK AWAY WITH -->
+  <section class="section">
+    <h2 class="signhead signhead--c">
+      <img src="assets/sign-what-you-get.png" width="1400" height="467" loading="lazy" alt="What you get">
+    </h2>
+    <ul class="gets">
+      <li>
+        <h3>Three things to try Monday</h3>
+        <p>Every demo comes with the actual prompt and the actual setup. You leave with notes,
+          not a feeling.</p>
+      </li>
+      <li>
+        <h3>One person to ask</h3>
+        <p>You'll meet somebody doing your job in a different building. That is most of what a
+          room is for.</p>
+      </li>
+      <li>
+        <h3>A start on your own thing</h3>
+        <p>Bring one task you hate. We'll get a rough first version of it working before you
+          leave.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 5. THE SLACK -->
+  <section class="section section--quiet">
+    <h2 class="signhead signhead--d">
+      <img src="assets/sign-the-slack.png" width="1400" height="467" loading="lazy" alt="The Slack">
+    </h2>
+    <div class="prose">
+      <p>Between meetups it's a Slack. People post what they tried, what broke, and what
+        finally worked. It's slow enough to keep up with.</p>
+      <p class="actions actions--single"><a class="btn btn--paint" href="#">Join the Slack</a></p>
+    </div>
+  </section>
+
+</main>
+
+<!-- 6. FOOTER -->
+<footer class="foot">
+  <div class="foot__inner">
+    <div class="foot__block">
+      <p class="foot__name">AI Friday</p>
+      <p>New Orleans, Louisiana</p>
+    </div>
+    <div class="foot__block">
+      <p>First Friday of the month.</p>
+      <p>Next: Friday, October 2, 2026, 5:30pm.</p>
+    </div>
+    <div class="foot__block">
+      <p><a href="mailto:hello@aifriday.org">hello@aifriday.org</a></p>
+      <p class="foot__social">
+        <a href="#">Slack</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

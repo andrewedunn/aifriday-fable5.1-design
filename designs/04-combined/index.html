@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- ABOUTME: Single-page homepage for AI Friday, a monthly AI meetup in New Orleans.
+     ABOUTME: Structured as a walk through a shotgun house, front porch to back step. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Friday — New Orleans</title>
+<meta name="description" content="A monthly meetup in New Orleans for people who want to build things with AI. Next one is Friday, October 2 at 5:30.">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#front-room">Skip to what this is</a>
+
+<!-- the shot line: every door in a shotgun house lines up. -->
+<div class="shotline" aria-hidden="true"></div>
+
+<main>
+
+  <!-- ─────────── ROOM 1 · THE FRONT PORCH ─────────── -->
+  <section class="porch" aria-labelledby="porch-name">
+    <picture>
+      <source media="(max-width: 820px)" srcset="assets/porch-tall.webp">
+      <img class="porch__photo" src="assets/porch-wide.webp" alt="Four people talking on the front porch of a New Orleans shotgun house at dusk. The porch ceiling is painted pale blue, the bulb is on, and one wooden chair is empty." fetchpriority="high">
+    </picture>
+
+    <div class="porch__content">
+      <div class="board">
+        <img class="board__panel" src="assets/sign-large.webp" alt="">
+        <div class="board__text">
+          <h1 class="board__name" id="porch-name">AI Friday</h1>
+          <p class="board__when">Friday, October&nbsp;2</p>
+          <p class="board__where">5:30 pm · New Orleans · venue to come</p>
+        </div>
+      </div>
+
+      <div class="porch__tail">
+        <p class="porch__line">You don't have to be a developer. Most of us aren't.</p>
+
+        <p class="porch__actions">
+          <a class="btn" href="#">Pull up a chair</a>
+          <a class="quietlink" href="#">or say hi in Slack first</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- doorway -->
+  <div class="door" aria-hidden="true">
+    <img class="door__photo" src="assets/door-warm.webp" alt="">
+  </div>
+
+  <!-- ─────────── ROOM 2 · WHAT THIS IS ─────────── -->
+  <section class="room room--warm" id="front-room">
+    <div class="room__inner">
+      <h2 class="sign">
+        <img class="sign__panel" src="assets/sign-small.webp" alt="">
+        <span class="sign__text">What this is</span>
+      </h2>
+      <div class="room__body">
+        <p class="lead">AI Friday is a meetup in New Orleans. Once a month, on a Friday, after work.</p>
+        <p>People bring something they made with AI and show it to the room. Most of it is half finished. That's the part worth seeing.</p>
+        <p>Nobody is selling anything. You don't have to bring anything your first time. Come look.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- doorway -->
+  <div class="door" aria-hidden="true">
+    <img class="door__photo" src="assets/door-cool.webp" alt="">
+  </div>
+
+  <!-- ─────────── ROOM 3 · WHAT PEOPLE MADE ─────────── -->
+  <section class="room room--cool" id="middle-room">
+    <div class="room__inner">
+      <h2 class="sign">
+        <img class="sign__panel" src="assets/sign-small.webp" alt="">
+        <span class="sign__text">What people made</span>
+      </h2>
+      <div class="room__body">
+        <ul class="projects">
+          <li class="project">
+            <h3 class="project__name">The intake bot</h3>
+            <p class="project__by">Renée · family law</p>
+            <p>Takes the first call from a new client, asks what she would have asked, and has the file started before Monday.</p>
+          </li>
+          <li class="project">
+            <h3 class="project__name">Monday through Friday</h3>
+            <p class="project__by">Marcus · teaches eighth grade science</p>
+            <p>He feeds it one standard and gets back a week of worksheets he actually wants to hand out.</p>
+          </li>
+          <li class="project">
+            <h3 class="project__name">The schedule</h3>
+            <p class="project__by">Thuy · runs a restaurant on Freret</p>
+            <p>Twelve people's availability, sorted in ten minutes instead of two hours on a Sunday night.</p>
+          </li>
+          <li class="project">
+            <h3 class="project__name">The RFP reader</h3>
+            <p class="project__by">Dave · nonprofit</p>
+            <p>Reads a forty page grant application and tells him whether it's worth the week.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- doorway -->
+  <div class="door" aria-hidden="true">
+    <img class="door__photo" src="assets/door-dim.webp" alt="">
+  </div>
+
+  <!-- ─────────── ROOM 4 · WHAT YOU LEAVE WITH ─────────── -->
+  <section class="room room--dim" id="back-room">
+    <div class="room__inner">
+      <h2 class="sign">
+        <img class="sign__panel" src="assets/sign-small.webp" alt="">
+        <span class="sign__text">What you leave with</span>
+      </h2>
+      <div class="room__body">
+        <ul class="takeaways">
+          <li>
+            <h3 class="takeaway__name">One thing you can use Monday</h3>
+            <p>Someone will show you a prompt, a tool, or a shortcut. Write it down. It will work.</p>
+          </li>
+          <li>
+            <h3 class="takeaway__name">Two or three names</h3>
+            <p>People with your job, in your city, stuck on the same thing. Now you can text them.</p>
+          </li>
+          <li>
+            <h3 class="takeaway__name">Proof it isn't that hard</h3>
+            <p>Someone who is not a programmer already built the thing you assumed needed one.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- screen door -->
+  <div class="door door--screen" aria-hidden="true">
+    <img class="door__photo" src="assets/door-screen.webp" alt="">
+  </div>
+
+  <!-- ─────────── ROOM 5 · THE KITCHEN ─────────── -->
+  <section class="room room--kitchen" id="kitchen">
+    <div class="room__inner">
+      <h2 class="sign">
+        <img class="sign__panel" src="assets/sign-small.webp" alt="">
+        <span class="sign__text">The kitchen</span>
+      </h2>
+      <div class="room__body">
+        <p class="lead">Every party ends up in the kitchen. Ours is a Slack.</p>
+        <p>People post what they're stuck on, what finally worked, and what they're bringing Friday. It moves slowly enough to keep up with.</p>
+        <p class="kitchen__actions">
+          <a class="btn" href="#">Join the Slack</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── THE BACK STEP ─────────── -->
+  <footer class="backstep">
+    <img class="backstep__photo" src="assets/backstep.webp" alt="">
+    <div class="backstep__inner">
+      <p class="backstep__mark">AI Friday</p>
+      <p class="backstep__where">New Orleans, Louisiana</p>
+      <ul class="backstep__links">
+        <li><a href="#">Slack</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="mailto:hello@aifriday.org">hello@aifriday.org</a></li>
+      </ul>
+      <p class="backstep__next">Next one is Friday, October 2 at 5:30.</p>
+    </div>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

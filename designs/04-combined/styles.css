@@ -1,0 +1,513 @@
+/* ABOUTME: All styling for the AI Friday homepage.
+   ABOUTME: Organised front to back, the same order you walk through the house. */
+
+/* ─────────────────────────────  TOKENS  ───────────────────────────── */
+
+:root {
+  --haint:   #a6c6cd;   /* porch ceiling. becomes trim once you're inside. */
+  --dusk:    #2c4557;   /* blue hour. body text. */
+  --lamp:    #e9a13b;   /* the bulb. */
+  --cream:   #f4ead8;   /* signwriter's ground. */
+  --enamel:  #a63a2a;   /* sign paint. */
+
+  --ink:      #1e3547;
+  --ink-soft: color-mix(in srgb, var(--ink) 80%, transparent);
+  --rule:     color-mix(in srgb, var(--dusk) 16%, transparent);
+
+  /* sign scale, 5 : 4 : 3 — a carpenter's triangle, the square used to
+     frame the walls these signs hang on. */
+  --sign-5: 13.6cqw;
+  --sign-4: 6.0cqw;
+  --sign-3: 8.4cqw;
+
+  --shot: 50%;          /* where every doorway lines up */
+  --gutter: clamp(1.35rem, 5vw, 4rem);
+  --room-pad: clamp(4.5rem, 11vh, 8.5rem);
+}
+
+/* ─────────────────────────────  BASE  ───────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: #d9d4c8;
+  color: var(--ink);
+  font-family: Karla, ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.02rem, 0.96rem + 0.34vw, 1.19rem);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+p { margin: 0 0 1.05em; }
+p:last-child { margin-bottom: 0; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--enamel);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 50;
+  background: var(--cream);
+  color: var(--dusk);
+  padding: 0.75rem 1.1rem;
+  font-weight: 700;
+}
+.skip:focus { left: 0.5rem; top: 0.5rem; }
+
+/* The one line that touches every room. Only drawn where it has open wall
+   to run across; on narrow screens the doorways carry the alignment instead. */
+.shotline { display: none; }
+
+@media (min-width: 900px) {
+  .shotline {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: var(--shot);
+    width: 1px;
+    background: color-mix(in srgb, var(--haint) 70%, transparent);
+    z-index: 3;
+    pointer-events: none;
+  }
+}
+
+/* ────────────────  SIGNAGE  ────────────────
+   Franklin Gothic is the alphabet a commercial sign painter reaches for.
+   It appears as room headers and on the one board out front. Nowhere else. */
+
+.board__name,
+.board__when,
+.sign__text {
+  font-family: 'Libre Franklin', ui-sans-serif, system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.018em;
+  line-height: 0.94;
+  margin: 0;
+}
+
+/* ─────────────────────────  ROOM 1 · THE PORCH  ───────────────────────── */
+
+.porch {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #1d2733;
+}
+
+.porch__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 64% 50%;
+}
+
+.porch__content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, max(33rem, 31vw));
+  margin: 0 0 clamp(2.25rem, 7vh, 5.5rem) var(--gutter);
+}
+
+/* the one board out front */
+.board {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+}
+
+.board__panel { width: 100%; }
+
+.board__text {
+  position: absolute;
+  inset: 11% 10.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5.5cqw;
+}
+
+.board__name {
+  font-size: var(--sign-5);
+  font-weight: 900;
+  color: var(--enamel);
+  /* the shade a sign painter brushes behind the letters. hard, never blurred. */
+  text-shadow: 0.055em 0.06em 0 color-mix(in srgb, var(--dusk) 78%, transparent);
+}
+
+.board__when {
+  font-size: var(--sign-4);
+  font-weight: 800;
+  color: var(--dusk);
+  letter-spacing: 0.002em;
+}
+
+.board__where {
+  margin: -2.6cqw 0 0;
+  font-size: 3.4cqw;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--dusk) 78%, transparent);
+}
+
+.porch__tail { display: contents; }
+
+.porch__line {
+  margin: clamp(1.1rem, 3vh, 1.9rem) 0 clamp(0.9rem, 2.4vh, 1.5rem);
+  max-width: 100%;
+  color: var(--cream);
+  font-weight: 500;
+  font-size: 1.02em;
+}
+
+.porch__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.35rem;
+  margin: 0;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--enamel);
+  color: var(--cream);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.03em;
+  letter-spacing: 0.005em;
+  padding: 0.82em 1.65em;
+  transition: background 140ms ease;
+}
+.btn:hover { background: color-mix(in srgb, var(--enamel) 86%, #000); }
+
+.quietlink {
+  color: var(--cream);
+  text-decoration-line: underline;
+  text-underline-offset: 0.28em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--cream) 55%, transparent);
+  font-size: 0.95em;
+}
+.quietlink:hover { text-decoration-color: var(--cream); }
+
+/* ─────────────────────────  DOORWAYS  ─────────────────────────
+   The transition between rooms is a door you pass through, not a rule. */
+
+.door {
+  position: relative;
+  height: clamp(15rem, 44vh, 26rem);
+  overflow: hidden;
+  background: #cfc9bd;
+}
+
+.door__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  transform: scale(var(--door-scale, 1));
+  transform-origin: 50% 38%;
+  will-change: transform;
+}
+
+/* The door pictures carry mirrored wall out to either side, so a wide screen
+   sees the whole frame from across the room instead of pressed up against it.
+   That keeps the lintel and the threshold in shot without giving half the page
+   over to hallway. */
+@media (min-width: 900px) {
+  .door { height: min(58vh, 29.7vw); }
+  .door__photo { object-position: 50% 16%; }
+}
+
+/* ─────────────────────────  ROOMS  ───────────────────────── */
+
+.room {
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.room__inner {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: var(--room-pad) var(--gutter);
+  position: relative;
+  z-index: 2;
+}
+
+.room__body { max-width: 34rem; }
+
+.lead {
+  font-size: 1.16em;
+  line-height: 1.5;
+}
+
+/* the room's own sign, hanging on the wall beside the door you came through */
+.sign {
+  container-type: inline-size;
+  position: relative;
+  display: block;
+  width: clamp(15rem, 62vw, 23rem);
+  margin: 0 0 clamp(2rem, 4.5vh, 3.25rem);
+  transform: rotate(var(--sign-tilt, -0.5deg));
+}
+
+.sign__panel { width: 100%; }
+
+.sign__text {
+  position: absolute;
+  inset: 9% 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: var(--sign-3);
+  font-weight: 900;
+  color: var(--enamel);
+  text-wrap: balance;
+}
+
+/* light falls differently in each room; that is the clock of the page */
+.room--warm    { background-image: url(assets/wall-warm.webp); }
+.room--cool    { background-image: url(assets/wall-cool.webp); }
+.room--dim     { background-image: url(assets/wall-dim.webp); }
+.room--kitchen { background-image: url(assets/wall-kitchen.webp); }
+
+/* Same plank, hung the other way round in two rooms, so four signs off one
+   board don't read as four copies of one board. */
+.room--cool .sign__panel,
+.room--kitchen .sign__panel { transform: scaleX(-1); }
+
+.room--warm    { --sign-tilt: -0.5deg; }
+.room--cool    { --sign-tilt:  0.6deg; }
+.room--dim     { --sign-tilt: -0.8deg; }
+.room--kitchen { --sign-tilt:  0.4deg; }
+
+/* by the back room the lamp is nearly out and the type has to change colour */
+.room--dim {
+  color: var(--cream);
+  --ink-soft: color-mix(in srgb, var(--cream) 62%, transparent);
+  --rule: color-mix(in srgb, var(--cream) 22%, transparent);
+}
+
+@media (min-width: 900px) {
+  .room { background-attachment: fixed; }
+
+  .room__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  /* The sign hangs to the left of the shot line and stays on the wall while you
+     read the room, so the wall beside the door is never just empty. */
+  .sign {
+    position: sticky;
+    top: clamp(2.5rem, 16vh, 8rem);
+    justify-self: end;
+    width: min(100%, 23rem);
+    margin-bottom: 0;
+  }
+
+  .room__body { padding-top: 0.4rem; }
+}
+
+/* ── what people made ── */
+
+.projects,
+.takeaways {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project,
+.takeaways > li {
+  padding: clamp(1.15rem, 2.6vh, 1.7rem) 0;
+  border-top: 1px solid var(--rule);
+}
+.project:first-child,
+.takeaways > li:first-child { border-top: 0; padding-top: 0; }
+.project:last-child,
+.takeaways > li:last-child { padding-bottom: 0; }
+
+.project__name,
+.takeaway__name {
+  margin: 0 0 0.2em;
+  font-family: inherit;
+  font-size: 1.09em;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.004em;
+}
+
+.project__by {
+  margin: 0 0 0.45em;
+  font-size: 0.88em;
+  color: var(--ink-soft);
+}
+
+/* ── the kitchen breaks the pattern: brightest room, you stop walking ── */
+
+.room--kitchen .room__body { max-width: 36rem; }
+
+.kitchen__actions { margin-top: clamp(1.5rem, 4vh, 2.4rem); }
+
+/* ─────────────────────────  THE BACK STEP  ───────────────────────── */
+
+.backstep {
+  position: relative;
+  overflow: hidden;
+  background: #12161c;
+  color: var(--cream);
+}
+
+.backstep__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 46%;
+}
+
+.backstep__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: clamp(7rem, 26vh, 15rem) var(--gutter) clamp(6.5rem, 14vh, 9rem);
+}
+
+.backstep__mark {
+  margin: 0 0 0.15em;
+  font-weight: 700;
+  font-size: 1.05em;
+  letter-spacing: 0.005em;
+}
+
+.backstep__where {
+  margin: 0 0 1.4em;
+  color: color-mix(in srgb, var(--cream) 66%, transparent);
+}
+
+.backstep__links {
+  list-style: none;
+  margin: 0 0 1.6em;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em 1.5em;
+  font-size: 0.95em;
+}
+
+.backstep__links a {
+  text-decoration-line: underline;
+  text-underline-offset: 0.28em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--cream) 38%, transparent);
+}
+.backstep__links a:hover { text-decoration-color: var(--cream); }
+
+.backstep__next {
+  margin: 0;
+  font-size: 0.92em;
+  color: color-mix(in srgb, var(--cream) 58%, transparent);
+}
+
+@media (min-width: 900px) {
+  .backstep__inner { padding-left: calc(var(--shot) + clamp(2rem, 4vw, 4rem)); }
+}
+
+/* ─────────────────────────  MOVEMENT  ─────────────────────────
+   Rooms settle as you enter them. That is the whole budget. */
+
+.room__inner,
+.porch__content {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .room__inner {
+    opacity: 0;
+    transform: translateY(1.1rem);
+    transition: opacity 620ms ease, transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .js .room__inner.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .porch__content {
+    opacity: 0;
+    transform: translateY(1.4rem);
+    animation: settle 900ms cubic-bezier(0.22, 0.61, 0.36, 1) 120ms forwards;
+  }
+}
+
+@keyframes settle {
+  to { opacity: 1; transform: none; }
+}
+
+/* ─────────────────────────  NARROW SCREENS  ───────────────────────── */
+
+@media (max-width: 899px) {
+  /* A phone crops these walls tightly, so the copy sits on whatever slice of
+     light it lands on. Aim each room at its lit side and carry a little more
+     weight, so the beadboard grooves don't eat the letter strokes. */
+  .room__body { font-weight: 500; }
+
+  .room--warm    { background-position: 8% center; }
+  .room--cool    { background-position: 12% center; }
+  .room--kitchen { background-position: 22% center; }
+
+  /* On a phone the board would sit straight on top of the people and the empty
+     chair, which is the whole argument. So the board goes up top and the porch
+     stays visible underneath it, with the ask at the bottom of the screen. */
+  .porch { align-items: stretch; }
+
+  .porch__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: clamp(1.4rem, 4.5vh, 2.75rem) var(--gutter) clamp(1.6rem, 4.5vh, 2.75rem);
+  }
+
+  .porch__tail { display: block; }
+
+  .board { width: min(100%, max(21rem, 52vw)); }
+  .board__text { inset: 10% 9%; }
+
+  .porch__line {
+    margin: 0 0 0.95rem;
+    max-width: 30rem;
+  }
+
+  .room--dim { background-position: 92% center; }
+}
+
+@media (max-width: 560px) {
+  .sign { width: min(100%, 18rem); }
+  .porch__actions { gap: 0.7rem 1rem; }
+  .btn { padding: 0.8em 1.4em; }
+}

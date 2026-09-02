@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- ABOUTME: Template for a design's notes page: DESIGN-NOTE.md and NOTES.md as the -->
+<!-- ABOUTME: session wrote them, rendered from Markdown by scripts/build.py. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{num}} {{name}}: design note</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../../site/styles.css">
+</head>
+<body class="notes-page">
+<header class="notes-head">
+  <a class="back" href="../../index.html#{{slug}}">AI Friday design sprint</a>
+  <p class="notes-kicker">{{num}} {{name}}</p>
+  <h1>Design note and build notes</h1>
+  <p class="muted">Written by the Claude Code session that built this direction. The design note came before any code; the build notes came after. Unedited.</p>
+  <p><a class="button" href="index.html">Open the design</a></p>
+</header>
+<main class="sheet sheet--page">
+{{body}}
+</main>
+</body>
+</html>

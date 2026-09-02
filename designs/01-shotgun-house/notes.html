@@ -1,0 +1,200 @@
+<!doctype html>
+<!-- ABOUTME: Template for a design's notes page: DESIGN-NOTE.md and NOTES.md as the -->
+<!-- ABOUTME: session wrote them, rendered from Markdown by scripts/build.py. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>01 Shotgun house: design note</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../../site/styles.css">
+</head>
+<body class="notes-page">
+<header class="notes-head">
+  <a class="back" href="../../index.html#01-shotgun-house">AI Friday design sprint</a>
+  <p class="notes-kicker">01 Shotgun house</p>
+  <h1>Design note and build notes</h1>
+  <p class="muted">Written by the Claude Code session that built this direction. The design note came before any code; the build notes came after. Unedited.</p>
+  <p><a class="button" href="index.html">Open the design</a></p>
+</header>
+<main class="sheet sheet--page">
+<h1>DESIGN-NOTE — 01 Shotgun House</h1>
+<h2>The idea in one line</h2>
+<p>The page is a shotgun house. You come in off the sidewalk, walk straight back through five
+rooms, and end up in the kitchen, which is where the conversation actually is.</p>
+<h2>Why a shotgun house is the right container</h2>
+<p>A shotgun house has no hallway. Every room opens into the next, in a line, and you cannot
+skip one. That is the same promise the site is making: there is one way through, it is short,
+and nobody is gatekeeping the door. It is also the most ordinary building in New Orleans —
+you feel it as a local, not as a visitor. No wrought iron, no beads, no Quarter.</p>
+<p>The other true thing about a shotgun: the middle is dark. There are no side windows, so the
+only light in the middle rooms comes through the doorways. The house gets dim as you go back,
+and then the kitchen is the brightest room in the building because it has a back door. That
+is a gift for this brief. The scroll can literally get darker and quieter through the middle
+and then open up when you arrive at the Slack.</p>
+<hr />
+<h2>Seed</h2>
+<p>A 192-character alphanumeric string. Read as six 32-character chunks. What it decided:</p>
+<table>
+<thead>
+<tr>
+<th>Signal in the string</th>
+<th>Design decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192 characters, 6 chunks of 32</td>
+<td>Six zones (5 rooms + back step). Base spacing module is 32. Content column is 32rem.</td>
+</tr>
+<tr>
+<td>Digits sum to <strong>191</strong></td>
+<td>Accent hue <strong>191°</strong> — Gulf South porch-ceiling blue ("haint blue"). Real vernacular, not souvenir.</td>
+</tr>
+<tr>
+<td>Complement of 191 is <strong>11°</strong></td>
+<td>Primary action hue <strong>11°</strong> — the brick-persimmon of a painted shutter. RSVP is the only thing on the page in this color.</td>
+</tr>
+<tr>
+<td>77 uppercase / 77 lowercase / 38 digits</td>
+<td>Two typefaces at exactly equal presence, plus a third <em>style</em> (not a third font) carrying ~20% of the text: letterspaced small caps for facts.</td>
+</tr>
+<tr>
+<td>Longest digit run is <strong>66</strong></td>
+<td>Every doorway opening is <strong>66%</strong> of the wall width. Same aperture, five times.</td>
+</tr>
+<tr>
+<td>Exactly <strong>4 doubled characters</strong> (<code>kk</code>, <code>66</code>, <code>oo</code>, <code>cc</code>)</td>
+<td>Exactly four interior doorways. Each double is a <em>pair of the same character</em>, so each doorway is built as a pair: head casing above, threshold strip below.</td>
+</tr>
+<tr>
+<td>Gaps between those doubles: 38 / 6 / 27 / 43 / 78</td>
+<td>Doorway rhythm is uneven. Second room is the shortest section on the page; the kitchen is the deepest. You get through the middle fast and then the house lets you stand still.</td>
+</tr>
+<tr>
+<td>Uppercase density per chunk: 47 / 38 / 44 / 34 / 41 / 38</td>
+<td>Wall paint lightness per room, in order. Room four is the darkest paint in the house — so the kitchen doorway is the single brightest threshold you pass through.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Palette</h2>
+<p>Everything is a paint chip or a material. Nothing is a UI color.</p>
+<pre><code>--ink        #23180F   warm near-black, the color of old cypress trim
+--ink-soft   #5A4835
+--paper      #F4EADA   front room wall — cream, low west light on it
+--putty      #DCCBAD   second room wall
+--sage       #AFB8A2   third room wall, a green-gray that gets dim
+--umber      #3B2E23   fourth room wall — the dark middle, warm not black
+--umber-deep #241C14
+--kitchen    #EFF0E4   kitchen wall — the brightest surface in the house
+--haint      #9BC4CD   hue 191. porch ceilings, links, small marks
+--persimmon  #BA4D34   hue 11. RSVP only.
+--cypress    #9A6A3C   floorboards
+--yard       #C9CE84   the green-gold coming in the back door
+</code></pre>
+<p>Rule: the persimmon appears <strong>twice</strong> on the whole page (RSVP at the top, RSVP in the footer).
+The haint blue is the only other accent and it never sits next to the persimmon.</p>
+<p>There is no dark mode. Rooms three and four are dark <em>rooms</em>, not a dark theme — warm umber
+walls with cream ink, the way a room looks at 5:30 in October.</p>
+<h2>Light, room to room</h2>
+<ol>
+<li><strong>Front room</strong> — bright. Low west light through the open front door, raking across the wall.</li>
+<li><strong>Second room</strong> — softer, no direct light, warm bounce.</li>
+<li><strong>Third room</strong> — dim. The projects sit in it like objects on a table you have to lean toward.</li>
+<li><strong>Fourth room</strong> — darkest. The paint is the darkest in the house.</li>
+<li><strong>Kitchen</strong> — flooded. Back door open, green light off the yard.</li>
+<li><strong>Back step</strong> — outside, evening.</li>
+</ol>
+<h2>Type</h2>
+<p>Two faces, equal weight, per the 77/77 split.</p>
+<ul>
+<li><strong>Fraunces</strong> (variable, <code>SOFT</code> up, <code>WONK</code> on) — the date, the room headings, and one spoken
+  line per room. It is a Windsor-lineage face; it reads like lettering someone painted on a
+  transom, not like a brand font.</li>
+<li><strong>Libre Franklin</strong> — body, buttons, everything factual. Franklin Gothic lineage: American
+  newsprint and neighborhood flyers. Warm, plain, not a tech sans.</li>
+<li>The third voice is a <em>style</em>, not a font: Libre Franklin 500 at 0.75rem, 0.16em tracking,
+  uppercase — used only for dates, addresses, and the footer. Roughly a fifth of the words.</li>
+</ul>
+<p>No monospace anywhere. No third family.</p>
+<h2>Architecture of the page</h2>
+<p>Narrow single column, max 32rem of text inside a 46rem house. Full-bleed on mobile.
+Outside the house on desktop is a dark warm neutral: you are looking down the length of it.</p>
+<p>Sequence: <strong>front door → room → doorway → room → doorway → room → doorway → room → doorway →
+kitchen → back door → back step.</strong></p>
+<p>Each doorway is a full-bleed image band: the current room's wall, a 66%-wide opening dead
+center, casing around it, floorboards running through, and the next room's light showing in
+the opening. Every doorway is photographed from the same height, dead-on, so the four of them
+in sequence read as one continuous walk. The apertures get brighter as you go back, and the
+last one is blinding compared to the room it sits in.</p>
+<p>Navigation is a small line-drawn floorplan — five rooms in a row — pinned at the edge. It
+fills in as you walk. It is the only nav on the page, and it is the "you are here."</p>
+<h2>The illustration is removable</h2>
+<p>If every image were deleted, what survives: a narrow single column; six sections in fixed
+order; each section on a flat paint color from the same palette, stepping darker through the
+middle and bright at the end; a hairline threshold rule and a 66%-wide gap at every section
+break; the same type hierarchy; the kitchen still arriving as the brightest, widest, last
+room; RSVP still the only persimmon thing on the page. The metaphor is carried by sequence,
+color, and width. The pictures make it physical, they don't make it legible.</p>
+<h2>Imagery to generate (Codex CLI)</h2>
+<p>Deadpan, frontal, unstyled — closer to architectural typology photography than to interiors
+editorial. No people, no props, no staging, no lens flare, no vignette. Every image gets the
+exact hex codes above in its prompt so the set coheres.</p>
+<ol>
+<li>Front door, head-on from the sidewalk, transom above, door open, plain lit wall visible
+   through the opening (the hero — the invitation is set inside that light).</li>
+<li>Five wall surfaces, one per room, each with its light already in the image.</li>
+<li>Cypress floorboards running away from camera.</li>
+<li>Four doorways, identical framing, increasing light through the aperture.</li>
+<li>The view out the back door: screen door, back steps, fig and banana, late green light.</li>
+</ol>
+<p>Depth comes from layering these on scroll — wall, then floor, then casing — at slightly
+different rates, so the doorways have thickness. Reduced-motion turns it off.</p>
+<h2>What I am refusing</h2>
+<p>No eyebrow labels. No cards with borders on the projects — they sit directly on the wall.
+No gradients standing in for light; if light is in the picture it was generated as light.
+No glow. No hero video. No "features." No stock smiling faces. Nothing that would make a
+lawyer in Mid-City think this site was built for programmers.</p>
+<h2>The first three seconds</h2>
+<p>Through the open front door: <strong>Friday, October 2. 5:30pm. New Orleans.</strong> and a persimmon
+button that says <em>Save me a seat</em>. Invited, happening, here — in that order, in one glance.</p>
+<hr>
+<h1>NOTES</h1>
+<p>I built the page as an actual walk: a narrow column of five rooms with a photographed doorway
+between each one, and the light dropping as you go back until the kitchen door opens and the
+whole thing brightens. A 192-character seed string set the decisions the brief left open — the
+digits sum to 191, which I read as hue 191° and turned into the haint-blue accent, with its
+complement at 11° reserved for the two RSVP buttons; the four doubled characters in the string
+became the four interior doorways, and the uneven gaps between them became the room depths, so
+the second room is the shortest section on the page and the kitchen is the deepest. Everything
+material was generated with the Codex CLI as photographs rather than faked in CSS: five wall
+surfaces, four doorways shot from the same height so they read as one continuous walk, the
+front door from the sidewalk, and the view out the back. I graded each doorway's near wall onto
+the exact colour of the tiled wall it butts against, using a curve that lifts midtones without
+clipping, so the seam between photo and wall disappears and the kitchen aperture can blow out
+without going pure white. Verification was frame-by-frame in a headless browser at six viewport
+sizes, plus scripted checks: that the RSVP clears the fold everywhere (it failed at 1280×800 and
+375×667 until I made the hero height viewport-aware), that every text colour passes AA against
+the wall behind it (one attribution line failed at 4.23:1, fixed), that the parallax actually
+moves and stops under <code>prefers-reduced-motion</code>, and that the structure survives with every image
+blocked — with the photographs gone you still get the narrow column, five rooms stepping through
+cream, putty, sage, umber and kitchen-white, and a 66%-wide aperture of the next room's colour at
+each threshold. Two bugs the screenshots caught that reading the code would not have: the wall
+tiles were rendering at roughly three times the texture scale of the photographs, and the mobile
+floorplan bar collapsed to zero height because its span went inline.</p>
+<p><strong>What I'd do next.</strong> The thresholds are the honest cost of this idea — the page is ten screens
+at desktop, and four of them are doorways, so I'd test whether people actually walk it or bail
+after room two, and be ready to shorten doorways two and three further. The dark surround on
+desktop is doing less work than it should; I'd either narrow the house and treat the outside as
+a real material, or let the walls bleed full-width and keep only the text narrow. The floorplan
+nav is the piece I'm least sure of — it earns its place as the only navigation and the "you are
+here," but it's also the one element a non-technical visitor might not read as clickable, so it
+wants a hover state and probably a label that persists. I'd also shoot a second front-door frame
+so the hero doesn't have to be cropped so tightly on phones, and get real venue copy in, since
+"Venue TBD" is currently carrying weight the design shouldn't have to absorb.</p>
+</main>
+</body>
+</html>

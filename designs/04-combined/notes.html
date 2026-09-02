@@ -1,0 +1,227 @@
+<!doctype html>
+<!-- ABOUTME: Template for a design's notes page: DESIGN-NOTE.md and NOTES.md as the -->
+<!-- ABOUTME: session wrote them, rendered from Markdown by scripts/build.py. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 Combined: design note</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../../site/styles.css">
+</head>
+<body class="notes-page">
+<header class="notes-head">
+  <a class="back" href="../../index.html#04-combined">AI Friday design sprint</a>
+  <p class="notes-kicker">04 Combined</p>
+  <h1>Design note and build notes</h1>
+  <p class="muted">Written by the Claude Code session that built this direction. The design note came before any code; the build notes came after. Unedited.</p>
+  <p><a class="button" href="index.html">Open the design</a></p>
+</header>
+<main class="sheet sheet--page">
+<h1>DESIGN-NOTE — AI Friday</h1>
+<p>Written before any code. Direction, constraints, and the rules that keep three ideas from fighting.</p>
+<hr />
+<h2>The problem this design has to solve</h2>
+<p>Three ideas were handed to me at once: a <strong>house</strong> (structure), a <strong>porch</strong> (feeling), and <strong>hand-painted signs</strong> (voice).
+Any one of them could eat the page. Run all three at full volume and you get a themed restaurant.</p>
+<p>So each gets exactly one job, and is forbidden from doing anyone else's:</p>
+<table>
+<thead>
+<tr>
+<th>Idea</th>
+<th>Its one job</th>
+<th>What it is explicitly not allowed to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>The house</strong></td>
+<td>Sequence. It orders the page and marks the transitions.</td>
+<td>It does not supply mood, and it does not supply color. No shutters, no gingerbread, no cute floorplan diagram.</td>
+</tr>
+<tr>
+<td><strong>The porch</strong></td>
+<td>Feeling. It makes the first screen warm and occupied.</td>
+<td>It does not persist. It is spent in the first screen and does not follow you inside.</td>
+</tr>
+<tr>
+<td><strong>The signs</strong></td>
+<td>Voice. They are the headers and nothing else.</td>
+<td>They never appear in body copy, buttons, labels, captions, or decoration.</td>
+</tr>
+</tbody>
+</table>
+<h3>How they hand off</h3>
+<p>The handoff is <strong>light</strong>, and it runs one direction only.</p>
+<ol>
+<li><strong>Porch → House.</strong> The hero is a photograph of a real porch at golden hour. You leave it by walking through the first doorway. After that door, the porch scene is gone for good — no more people, no more sky, no more furniture. What survives the doorway is a single color: <strong>haint blue</strong>, demoted from <em>sky</em> to <em>trim</em>. Inside the house, haint blue is only ever paint on a door frame, a baseboard, and the door-line. That demotion is the whole handoff. The feeling becomes structure.</li>
+<li><strong>House → Signs.</strong> The house decides <em>where</em> a sign hangs (one per room, on the wall beside the door you just came through) and <em>how big</em>. The house never decides what a sign says.</li>
+<li><strong>Signs → Porch.</strong> One exception, and only one: the big painted board on the porch. It is the loudest object on the page and it is allowed to be, because it is doing the porch's job and the signs' job at the same moment — which is the only moment the page can afford it.</li>
+</ol>
+<p>If any of the three starts doing a second job, it gets cut back. Notes in NOTES.md on where that happened.</p>
+<hr />
+<h2>Structure: the shotgun house</h2>
+<p>A shotgun house is one room deep and several rooms long, with every door in a line. There is no hallway. To reach the back you walk through every room. That is a scroll.</p>
+<p><strong>Six rooms, front to back:</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Room</th>
+<th>Section</th>
+<th>Light</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Front porch</td>
+<td>The invitation</td>
+<td>Golden hour tipping into blue hour</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Front room</td>
+<td>What AI Friday is</td>
+<td>Warm lamplight, shutters half-closed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Middle room</td>
+<td>What people are building</td>
+<td>Cool side light from a window</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Back room</td>
+<td>What you'll walk away with</td>
+<td>Dimmer, evening settling in</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Kitchen</td>
+<td>Join the Slack</td>
+<td>One bright overhead bulb. The brightest room in the house.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Back step</td>
+<td>Footer</td>
+<td>Outside again. Blue hour. Dark.</td>
+</tr>
+</tbody>
+</table>
+<p>The light is the clock. You arrive at golden hour and leave after dark, which is how a good Friday actually goes.</p>
+<h3>The signature: the shot line</h3>
+<p>Every door in a shotgun is aligned — that is the whole joke the house is named for. So <strong>one vertical line runs the full height of the page at a fixed x-position</strong>, and every doorway aperture is centered on it. Off-center, not middle: the door sits at <strong>3/8 from the left</strong>, content in the 5/8. Real shotguns put the doors to one side.</p>
+<p>The line is hairline-thin, haint blue, and it never breaks. It is the only element that touches all six rooms. Scroll and you are tracking down it.</p>
+<h3>Doorways are real, not dividers</h3>
+<p>The transition between rooms is a generated image of an actual door frame — jambs, header, casing, and the next room's light visible through the opening. Two uprights and a lintel. You pass <em>through</em> it, which means the next room's color starts inside the aperture and floods out as you scroll. A horizontal rule would have been the lazy version; the point is that a doorway has a thickness and a wall has a far side.</p>
+<p><strong>Room 5 (kitchen) has no doorway before it — it has a screen door.</strong> Different image, brighter light, because you can hear people in there before you get there.</p>
+<hr />
+<h2>Scene: the porch</h2>
+<p>First screen only. Golden hour into blue hour. A porch on a New Orleans street, ceiling painted haint blue, a few people already sitting, <strong>one empty chair</strong>, a bare bulb just coming on, music implied from somewhere down the block.</p>
+<p>The empty chair is the argument. It is the entire pitch made without a sentence: <em>there is a seat and nobody is in it.</em> The RSVP under it says <strong>Pull up a chair</strong>.</p>
+<p>Photographic, generated, not illustrated. Not a stock-photo crowd. Three or four people, seen loosely, not looking at the camera, not performing fun. Ordinary evening.</p>
+<p><strong>No French Quarter.</strong> No balconies, no ironwork, no beads, no brass. This is a residential block — clapboard, a fern, a step, a car parked in front. New Orleans as a place people live, not a place people visit.</p>
+<hr />
+<h2>Type: hand-painted shop signage</h2>
+<p><strong>Vernacular: corner store, po-boy shop, laundromat.</strong> Not saloon, not farmhouse, not café. That distinction is real and it lives in the letterform:</p>
+<ul>
+<li>A saloon sign is a <strong>Clarendon slab</strong> with heavy brackets — wanted posters, western. Rejected.</li>
+<li>A farmhouse sign is a <strong>script or a rustic serif</strong>. Rejected.</li>
+<li>A café sign is a <strong>thin geometric or a wobbly hand-script</strong>. Rejected.</li>
+<li>A New Orleans corner-store sign is <strong>American gothic — Franklin Gothic and its cousins</strong> — very bold, slightly condensed, all caps, painted with a brush onto plywood or straight onto the wall, with a hard offset shadow and no blur. That is the alphabet a commercial sign painter actually reaches for.</li>
+</ul>
+<p>So:</p>
+<ul>
+<li><strong>Display / signs — Libre Franklin 800–900, all caps, tight tracking.</strong> Franklin Gothic's open-source descendant. Set on generated painted board surfaces so the brushwork, weathering, and edges are real photographic texture rather than a filter. Hard offset shadow in enamel red, no blur — a sign-painting convention, not a CSS effect.</li>
+<li><strong>Body — Karla, regular and medium, sentence case, generous leading.</strong> Humanist grotesque with slightly odd terminals. Warm, plain, readable, and pointedly <em>not</em> techy. Nothing here says "developer."</li>
+</ul>
+<p>Two families. That is all. Weight, case, scale, and the painted board carry the contrast — the way a sign painter got contrast, with one alphabet and a bigger brush.</p>
+<p><strong>Sign sizes step 5 : 4 : 3.</strong> The big porch board, the room signs, the small painted labels. A 3-4-5 triangle is the square a carpenter uses to frame a house, so the signage is proportioned by the same tool that built the walls behind it.</p>
+<p><strong>Where signs are banned:</strong> buttons, body copy, project names, footer, captions, numerals, navigation. If it is not a room header, it is Karla.</p>
+<hr />
+<h2>Color</h2>
+<p>Haint blue is primary — the pale blue New Orleans paints porch ceilings, traditionally to keep spirits out and honestly to keep wasps from nesting.</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Hex</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--haint</code></td>
+<td><code>#A6C6CD</code></td>
+<td>Primary. Porch ceiling in room 1; door frames, baseboards, and the shot line everywhere after.</td>
+</tr>
+<tr>
+<td><code>--dusk</code></td>
+<td><code>#2C4557</code></td>
+<td>Blue hour. Body text, the back step, deep shadow.</td>
+</tr>
+<tr>
+<td><code>--lamp</code></td>
+<td><code>#E9A13B</code></td>
+<td>The bulb. Golden hour. Used sparingly and always as <em>light</em>, never as a fill.</td>
+</tr>
+<tr>
+<td><code>--cream</code></td>
+<td><code>#F4EAD8</code></td>
+<td>Signwriter's ground. Painted board, page paper.</td>
+</tr>
+<tr>
+<td><code>--enamel</code></td>
+<td><code>#B2402F</code></td>
+<td>Sign-paint red. Lettering shadow and the RSVP. One button, one color.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Five colors. No green, no purple, no gold.</strong> Partly because those are the tourist palette and the brief bans them. Partly because a palette with a deliberate hole in it holds together better than one that covers the wheel — the same reason the porch has an empty chair.</p>
+<hr />
+<h2>Copy</h2>
+<p>Short, plain, spoken. The reader is a paralegal, a teacher, a restaurant manager. They already suspect this is not for them, so the copy's only job is to remove that suspicion and then get out of the way.</p>
+<ul>
+<li>No "unlock," "empower," "supercharge," "journey," "community-driven."</li>
+<li>No em-dash cadence. Short sentences and periods.</li>
+<li>Sentence case everywhere except signs.</li>
+<li>Say the concrete thing. "Twelve people's availability in ten minutes" beats "streamline scheduling."</li>
+<li>Every line is a placeholder. A human rewrites all of it.</li>
+</ul>
+<p><strong>The first three seconds, in order:</strong>
+1. <em>You're invited</em> — an empty chair and the words "pull up a chair."
+2. <em>This is happening</em> — a date on a painted board: Friday, October 2, 5:30.
+3. <em>It's here</em> — a New Orleans porch you can tell is a New Orleans porch without a single postcard cue.</p>
+<hr />
+<h2>Motion</h2>
+<p>Very little, and all of it serves one metaphor: walking.</p>
+<ul>
+<li>Rooms lift and settle slightly as you enter them. That is it.</li>
+<li>Doorway apertures move at a fractionally different rate than their walls, so passing through a door has depth. Small enough that you feel it and do not notice it.</li>
+<li>The sign settles onto the porch once, on load, and never moves again.</li>
+<li>No parallax anywhere else, no counters, no scroll-jacking, no reveal-on-scroll for individual words.</li>
+<li><code>prefers-reduced-motion</code> turns all of it off and the page still works, because the sequence is in the document, not in the JavaScript.</li>
+</ul>
+<hr />
+<h2>What I am refusing to build</h2>
+<ul>
+<li>A dark mode. Anti-goal, and also: the page already gets dark. That is the ending.</li>
+<li>A features grid. The projects are a list on a wall, not cards.</li>
+<li>Eyebrow labels above headings.</li>
+<li>A floorplan diagram, a scroll-progress house icon, or any device that explains the metaphor. If the house needs a legend, the house failed.</li>
+<li>Any texture, surface, or light made from CSS gradients, box-shadows, or filters. Surfaces are photographed. The only shadow in the CSS is the sign painter's hard offset, which is lettering, not lighting.</li>
+<li>A second display face, a third color temperature, or a fourth idea.</li>
+</ul>
+<hr>
+<h1>NOTES</h1>
+<p>I built the page as one walk: porch, four rooms, back step, with a photographed doorway between each pair and a single hairline "shot line" running the whole height at the point every door lines up on. All thirteen shipped surfaces are generated photographs (Codex CLI, billed to the ChatGPT subscription) — the porch at golden hour, four beadboard walls under four different lights, four views of the same doorway, the back steps at blue hour, and two blank hand-painted boards left empty so the copy stays live type. A generated floor didn't earn a place and isn't shipped; its source is still in <code>assets/_src/</code>. No texture, light, or surface anywhere is CSS. Type is Libre Franklin 800/900 for the signs (Franklin Gothic is the sign painter's alphabet, and it is neither saloon nor farmhouse nor café) and Karla for everything else, both self-hosted.</p>
+<p><strong>What fought with what.</strong> Mostly the house fought the porch, and the house won too many rounds before I cut it back. My first pass gave each doorway a near-full-screen band, which put 48% of the scroll inside hallways — the house doing mood and pacing instead of just sequence. I couldn't shorten the bands without cropping the lintel off and turning a doorway into a dark slot, so I rebuilt the door images with mirrored wall extending off both sides (checked pixel-continuous at all four joins after my first attempt got the mirror order backwards and left a visible seam). Now you see the door from across the room, which is the actual shotgun view, and the doorways are down to about a third of the page. The porch fought back on mobile: the painted board sat exactly on top of the people and the empty chair, deleting the entire argument, so on narrow screens the board moves to the top of the screen and the ask to the bottom with the porch left visible between them. The signs were the easiest to keep honest — they never left the headers — but four instances of one plank photo read as four copies of one photo, so two of them hang mirrored. The light progression also fought legibility twice, and both times the photograph was right and my layout was wrong: cream copy in the back room landed on the lamp's amber pool, and the phone crop put beadboard grooves at the same scale as the letter strokes. I mirrored the dim wall so the lamp falls behind the sign instead, and aimed each mobile wall crop at its lit side. I audited contrast by hiding the text, screenshotting the real rendered backgrounds viewport by viewport, and scoring the 5th-percentile pixel under every text box; that cleared all failures, and the remaining warnings sit at median 6–7:1 with only the darkest grooves dipping.</p>
+<p><strong>What I'd do next.</strong> The four middle rooms are content-light next to how much wall they show — I'd either write more into them or tighten the vertical rhythm, and I suspect the answer is more copy, since the owner is rewriting all of this anyway. The kitchen is supposed to be the room you stop in and it currently uses the same two-column layout as everywhere else; giving it one deliberate break in the pattern would earn the Slack CTA more. I'd also test the walk on a real phone rather than an emulated viewport, since <code>background-attachment: fixed</code> is the one thing here likely to feel different on device. Sources for every generated image are kept in <code>assets/_src/</code> as the original PNGs; <code>assets/*.webp</code> is what the page loads (~1.5M total).</p>
+</main>
+</body>
+</html>

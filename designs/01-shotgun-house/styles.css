@@ -1,0 +1,428 @@
+/* ABOUTME: Styles for the AI Friday homepage, laid out as a walk through a shotgun house.
+   ABOUTME: Rooms are sections, thresholds are the transitions, the kitchen is the last room. */
+
+/* ── paint chips ─────────────────────────────────────────── */
+:root {
+  --ink:        #23180F;
+  --ink-soft:   #4A3A28;
+  --paper:      #F4EADA;   /* room 1 */
+  --putty:      #DCCBAD;   /* room 2 */
+  --sage:       #AFB8A2;   /* room 3 */
+  --umber:      #3B2E23;   /* room 4 */
+  --kitchen:    #EFF0E4;   /* room 5 */
+  --haint:      #9BC4CD;
+  --persimmon:  #BA4D34;
+  --night:      #1A1410;   /* outside the house */
+
+  --house: 46rem;
+  --measure: 32rem;
+  --unit: 2rem;            /* 32 */
+  --tile: 600px;           /* wall texture scaled to match the photographs */
+
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans:  "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: inherit; }
+
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--ink); color: var(--paper);
+  padding: .75rem 1rem; z-index: 50;
+}
+.skip:focus { left: 0; }
+
+:focus-visible { outline: 2px solid var(--persimmon); outline-offset: 3px; }
+
+/* ── the house ───────────────────────────────────────────── */
+.house {
+  width: 100%;
+  max-width: var(--house);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;   /* the walls are the edge of the house */
+}
+
+/* ── type ────────────────────────────────────────────────── */
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 96, "SOFT" 40, "WONK" 1;
+  font-weight: 400;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.55rem, 8.5vw, 4.75rem);
+  line-height: .92;
+  letter-spacing: -.022em;
+  margin: .35em 0 .5rem;
+}
+
+h2 {
+  font-size: clamp(1.95rem, 6vw, 2.8rem);
+  line-height: 1.06;
+  letter-spacing: -.014em;
+  margin-bottom: 1.4rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  line-height: 1.2;
+  letter-spacing: -.008em;
+  font-variation-settings: "opsz" 30, "SOFT" 40, "WONK" 1;
+  margin-bottom: .3rem;
+}
+
+p { margin: 0 0 1.15rem; }
+p:last-child { margin-bottom: 0; }
+
+.caps {
+  font-family: var(--sans);
+  font-size: .705rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* the one spoken line per room */
+.aside {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24, "SOFT" 60, "WONK" 1;
+  font-style: italic;
+  font-size: 1.28rem;
+  line-height: 1.4;
+  margin: 0;
+}
+.aside--wide {
+  font-style: normal;
+  font-size: clamp(1.35rem, 4.4vw, 1.7rem);
+  line-height: 1.28;
+  margin-top: 2.4rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+  max-width: 22ch;
+}
+
+.lede { font-size: 1.17rem; line-height: 1.55; max-width: 30ch; }
+.fine { font-size: .875rem; color: var(--ink-soft); }
+.stamp { margin-bottom: 1.25rem; }
+
+/* ── masthead ────────────────────────────────────────────── */
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.5rem 1.05rem;
+  background: var(--night);
+  color: var(--paper);
+  border-bottom: 1px solid #2E251C;
+}
+.masthead__name {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 20, "SOFT" 50, "WONK" 1;
+  font-size: 1.15rem;
+  letter-spacing: -.01em;
+  margin: 0;
+}
+.masthead__place { margin: 0; opacity: .62; }
+
+/* ── the street ──────────────────────────────────────────── */
+.street { background: var(--night); }
+.street img {
+  width: 100%;
+  height: clamp(165px, 30vh, 330px);
+  object-fit: cover;
+  object-position: center 26%;
+}
+
+/* ── rooms ───────────────────────────────────────────────── */
+.room {
+  position: relative;
+  padding: clamp(3.6rem, 11vw, 6.5rem) 1.5rem clamp(3.6rem, 11vw, 6.5rem);
+  background-repeat: repeat;
+  background-size: var(--tile) auto;
+  background-position: center top;
+}
+.col { max-width: var(--measure); margin: 0 auto; }
+
+.room--1 { background-color: var(--paper);   background-image: url("assets/wall-1.webp"); padding-top: clamp(1.7rem, 3.4vh, 2.6rem); }
+.room--2 { background-color: var(--putty);   background-image: url("assets/wall-2.webp"); }
+.room--3 { background-color: var(--sage);    background-image: url("assets/wall-3.webp"); }
+.room--4 { background-color: var(--umber);   background-image: url("assets/wall-4.webp"); color: var(--paper); }
+.room--5 { background-color: var(--kitchen); background-image: url("assets/wall-5.webp");
+           padding-top: clamp(5.5rem, 17vw, 10rem); padding-bottom: clamp(6rem, 19vw, 11rem); }
+
+.room--4 .fine { color: color-mix(in srgb, var(--paper) 68%, transparent); }
+.room--4 .aside--wide { border-top-color: color-mix(in srgb, var(--paper) 26%, transparent); }
+
+/* ── thresholds: the doorways ────────────────────────────── */
+.threshold {
+  position: relative;
+  aspect-ratio: 1024 / 1400;
+  background-repeat: repeat;
+  background-size: var(--tile) auto;
+  overflow: hidden;
+}
+.threshold img {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: -30px;
+  width: 100%;
+  height: calc(100% + 60px);   /* headroom so the parallax never exposes an edge */
+  object-fit: cover;
+  will-change: transform;
+}
+/* drawn fallback: a 66% opening in the wall, visible if the photograph never loads */
+.aperture {
+  position: absolute;
+  z-index: 0;
+  left: 17%;
+  right: 17%;
+  top: 9%;
+  bottom: 0;
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  border-bottom: 0;
+}
+
+.threshold--1 { background-color: var(--paper); background-image: url("assets/wall-1.webp"); }
+.threshold--2 { background-color: var(--putty); background-image: url("assets/wall-2.webp"); }
+.threshold--3 { background-color: var(--sage);  background-image: url("assets/wall-3.webp"); }
+.threshold--4 { background-color: var(--umber); background-image: url("assets/wall-4.webp"); }
+
+/* The doorways are not evenly spaced. Two narrow middle rooms go by quickly;
+   the last door, into the kitchen, is the long one. */
+.threshold--2 { aspect-ratio: 1024 / 1120; }
+.threshold--3 { aspect-ratio: 1024 / 1310; }
+.threshold--4 { aspect-ratio: 1024 / 1536; }
+.threshold--2 img, .threshold--3 img { object-position: center top; }
+
+.threshold--1 .aperture { background-color: var(--putty); }
+.threshold--2 .aperture { background-color: var(--sage); }
+.threshold--3 .aperture { background-color: var(--umber); }
+.threshold--4 .aperture { background-color: var(--kitchen); border-color: color-mix(in srgb, var(--paper) 30%, transparent); }
+
+/* ── out the back door ───────────────────────────────────── */
+.backdoor {
+  position: relative;
+  aspect-ratio: 1024 / 1180;
+  background-color: var(--kitchen);
+  background-image: url("assets/wall-5.webp");
+  background-repeat: repeat;
+  background-size: var(--tile) auto;
+  overflow: hidden;
+}
+.backdoor img {
+  position: absolute;
+  left: 0;
+  top: -30px;
+  width: 100%;
+  height: calc(100% + 60px);
+  object-fit: cover;
+  object-position: center top;
+  will-change: transform;
+}
+
+/* ── the back step ───────────────────────────────────────── */
+.step {
+  background-color: var(--night);
+  color: var(--paper);
+  padding: clamp(3rem, 9vw, 4.5rem) 1.5rem clamp(4rem, 10vw, 6rem);
+}
+.step .col { display: grid; gap: 3rem; }
+
+.step__date {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 48, "SOFT" 40, "WONK" 1;
+  font-size: clamp(1.55rem, 5.5vw, 2.1rem);
+  line-height: 1.05;
+  letter-spacing: -.015em;
+  margin-bottom: .55rem;
+}
+.step__time { color: color-mix(in srgb, var(--paper) 72%, transparent); font-size: .95rem; margin-bottom: 1.6rem; }
+.step__meta {
+  display: grid;
+  gap: .9rem;
+  padding-top: 2rem;
+  border-top: 1px solid #33291F;
+  font-size: .93rem;
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
+}
+.step__name {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 20, "SOFT" 50, "WONK" 1;
+  font-size: 1.1rem;
+  color: var(--paper);
+  margin: 0;
+}
+.step__meta p { margin: 0; }
+.step__meta a { color: var(--haint); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.step__social { display: flex; gap: 1.4rem; }
+
+/* ── actions ─────────────────────────────────────────────── */
+.act { margin: clamp(1.1rem, 2.6vh, 1.7rem) 0 1rem; }
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.0125rem;
+  letter-spacing: .005em;
+  padding: .95rem 1.9rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: transform .16s ease, background-color .16s ease, color .16s ease;
+}
+.btn--go {
+  background: var(--persimmon);
+  color: #FFF4EC;
+  border: 1px solid var(--persimmon);
+}
+.btn--go:hover { transform: translateY(-2px); background: #A8422B; }
+.btn--slack {
+  background: var(--ink);
+  color: var(--kitchen);
+  border: 1px solid var(--ink);
+}
+.btn--slack:hover { transform: translateY(-2px); background: #3A2A1B; }
+
+/* ── room 3 · the works ──────────────────────────────────── */
+.works { list-style: none; margin: 0; padding: 0; }
+.works li { padding: 1.7rem 0; border-top: 1px solid color-mix(in srgb, var(--ink) 24%, transparent); }
+.works li:first-child { border-top: 0; padding-top: .3rem; }
+.works .caps { color: var(--ink-soft); margin-bottom: .55rem; }
+.works p:last-child { max-width: 40ch; }
+
+/* ── room 4 · the takeaways ──────────────────────────────── */
+.takeaways { list-style: none; margin: 0; padding: 0; counter-reset: t; }
+.takeaways li {
+  counter-increment: t;
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 0 1.1rem;
+  padding: 1.7rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--paper) 22%, transparent);
+}
+.takeaways li:first-child { border-top: 0; padding-top: .3rem; }
+.takeaways li::before {
+  content: counter(t);
+  grid-row: 1 / span 2;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 60, "SOFT" 40, "WONK" 1;
+  font-size: 2.3rem;
+  line-height: .9;
+  color: var(--haint);
+}
+.takeaways p { max-width: 38ch; margin: 0; }
+
+/* ── the floorplan ───────────────────────────────────────── */
+.plan {
+  position: fixed;
+  left: 1.35rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 8.5rem;
+}
+.plan__title {
+  font-family: var(--sans);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 45%, transparent);
+  margin: 0 0 .7rem;
+}
+.plan__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+.plan__list li { display: block; }
+.plan__room {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  width: 100%;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+.plan__bar {
+  flex: 0 0 auto;
+  width: 9px;
+  border: 1px solid color-mix(in srgb, var(--paper) 22%, transparent);
+  border-radius: 1px;
+  background: transparent;
+  transition: background-color .3s ease, border-color .3s ease;
+}
+.plan__label {
+  font-size: .72rem;
+  line-height: 1.25;
+  color: color-mix(in srgb, var(--paper) 40%, transparent);
+  opacity: 0;
+  transform: translateX(-3px);
+  transition: opacity .25s ease, transform .25s ease, color .25s ease;
+}
+.plan__room[aria-current="true"] .plan__bar { background: var(--haint); border-color: var(--haint); }
+.plan__room[aria-current="true"] .plan__label { opacity: 1; transform: none; color: color-mix(in srgb, var(--paper) 82%, transparent); }
+.plan:hover .plan__label, .plan__room:focus-visible .plan__label { opacity: 1; transform: none; }
+
+@media (max-width: 63rem) {
+  .plan {
+    left: 0; right: 0; top: 0; bottom: auto;
+    transform: none;
+    width: 100%;
+    display: flex;
+    gap: 0;
+    background: var(--night);
+    padding: 3px 0;
+  }
+  .plan__title { display: none; }
+  .plan__list { display: flex; width: 100%; gap: 2px; padding: 0 2px; }
+  .plan__list li { flex: 1 1 auto; }
+  .plan__room { display: block; }
+  .plan__bar { display: block; width: 100%; height: 4px !important; border: 0; background: color-mix(in srgb, var(--paper) 22%, transparent); border-radius: 0; }
+  .plan__label { display: none; }
+  .plan__room[aria-current="true"] .plan__bar { background: var(--haint); }
+  .masthead { padding-top: 1.5rem; }
+}
+
+@media (max-width: 34rem) {
+  body { font-size: 1.0125rem; }
+  .room { padding-left: 1.35rem; padding-right: 1.35rem; }
+  .street img { height: clamp(150px, 26vh, 250px); }
+  .takeaways li { grid-template-columns: 2.1rem 1fr; gap: 0 .9rem; }
+  .takeaways li::before { font-size: 1.9rem; }
+}
+
+@media (min-width: 48rem) {
+  .step .col { grid-template-columns: 1.15fr 1fr; gap: 3.5rem; align-items: start; }
+  .step__meta { border-top: 0; padding-top: .2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .threshold img, .backdoor img { transform: none !important; }
+  .btn { transition: none; }
+}
+
+

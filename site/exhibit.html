@@ -1,0 +1,25 @@
+<article class="exhibit" id="{{slug}}">
+  <header class="exhibit-head">
+    <span class="exhibit-num">{{num}}</span>
+    <h3>{{name}}</h3>
+    <p class="exhibit-line">{{line}}</p>
+  </header>
+  <div class="exhibit-body">
+    {{figure}}
+    <aside class="placard">
+      <dl class="facts">
+{{facts}}
+      </dl>
+      {{mobile}}
+      <nav class="exhibit-links">
+{{links}}
+      </nav>
+    </aside>
+  </div>
+  <details class="doc">
+    <summary>The prompt this session received</summary>
+    <div class="sheet">
+{{prompt}}
+    </div>
+  </details>
+</article>

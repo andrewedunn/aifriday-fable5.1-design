@@ -1,0 +1,308 @@
+/* AI Friday — hand-painted shop signage.
+   Every painted surface in this page is a generated image. No gradient,
+   box-shadow, or filter is used anywhere to imitate paint, light or material. */
+
+/* ---------- tokens ---------- */
+:root {
+  /* Enamel, sampled from the generated hero sign and section signs. */
+  --red:        #8e1512;
+  --red-dark:   #6b0f0d;
+  --blue:       #0241a2;
+  --navy:       #033671;
+  --ochre:      #e7a533;
+  --bone:       #e3d5b8;
+  --wall:       #e4dac0;
+  --soot:       #1f2228;
+  --soot-soft:  #4d5058;
+  --rule:       #b3a68b;
+
+  /* Scale: 15 / 18 / 21 / 26 / 34 / 46 */
+  --t-sm: 0.9375rem;
+  --t-base: 1.125rem;
+  --t-md: 1.3125rem;
+  --t-lg: 1.625rem;
+  --t-xl: 2.125rem;
+
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+  --measure: 34rem;
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body, h1, h2, h3, p, ul, li, figure { margin: 0; padding: 0; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* ---------- page ---------- */
+body {
+  font-family: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--t-base);
+  line-height: 1.6;
+  color: var(--soot);
+  background-color: var(--wall);
+  background-image: url("assets/wall.jpg");
+  background-size: 1800px;
+  background-repeat: repeat;
+  overflow-x: clip;
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--red); color: var(--bone);
+  padding: 0.75rem 1.25rem; z-index: 10; text-decoration: none;
+}
+.skip:focus { left: 0; }
+
+a { color: var(--blue); }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+/* ---------- signs ---------- */
+/* The signs were painted at slightly different angles because a person hung
+   them. Rotations are read off the seed string in tenths of a degree. */
+.hero__sign          { transform: rotate(-0.3deg); }
+.signhead--a img     { transform: rotate( 0.6deg); }
+.signhead--b img     { transform: rotate(-0.5deg); }
+.signhead--c img     { transform: rotate( 0.3deg); }
+.signhead--d img     { transform: rotate(-0.7deg); }
+
+.signhead { margin-bottom: 1.75rem; }
+.signhead img { width: 100%; }
+.signhead--a img { max-width: 27rem; }   /* WHAT THIS IS */
+.signhead--b img { max-width: 20rem; }   /* SPECIALS */
+.signhead--c img { max-width: 27rem; }   /* WHAT YOU GET */
+.signhead--d img { max-width: 21rem; }   /* THE SLACK */
+
+/* ---------- hero ---------- */
+.hero {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 7vw, 5rem) var(--gutter) 0;
+}
+.hero__sign img { width: 100%; }
+
+.hero__body {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  margin-top: clamp(2.25rem, 5vw, 3.5rem);
+  align-items: start;
+}
+@media (min-width: 62rem) {
+  .hero__body { grid-template-columns: 1fr 23rem; gap: 4.5rem; }
+}
+
+.lead {
+  font-size: clamp(var(--t-md), 2.4vw, var(--t-lg));
+  line-height: 1.42;
+  font-weight: 500;
+  max-width: 30ch;
+}
+.venue {
+  margin-top: 1.125rem;
+  color: var(--soot-soft);
+  font-size: var(--t-base);
+  max-width: 34ch;
+}
+
+/* ---------- buttons ---------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: 2rem;
+}
+.actions--single { margin-top: 2rem; }
+
+.btn {
+  display: inline-block;
+  font-size: var(--t-base);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  padding: 0.9rem 1.5rem;
+  text-decoration: none;
+  border: 2px solid var(--red);
+}
+.btn--paint  { background: var(--red); color: var(--bone); }
+.btn--paint:hover, .btn--paint:focus-visible { background: var(--red-dark); border-color: var(--red-dark); }
+.btn--plain  { background: transparent; color: var(--red); }
+.btn--plain:hover, .btn--plain:focus-visible { background: var(--red); color: var(--bone); }
+
+.countdown {
+  margin-top: 1rem;
+  font-size: var(--t-sm);
+  color: var(--soot-soft);
+}
+
+/* ---------- the run-of-show board ---------- */
+/* Painted board is the generated image; the schedule on top is plain Libre
+   Franklin, the way a real price list is written on a real board. Type is
+   sized in container units so it always fits inside the painted keyline. */
+.board {
+  background-image: url("assets/board-slate.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  aspect-ratio: 1100 / 1375;
+  container-type: inline-size;
+  transform: rotate(0.4deg);
+  width: 100%;
+  max-width: 23rem;
+}
+.board__inner {
+  height: 100%;
+  padding: 14% 13% 13%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--soot);
+}
+.board__head {
+  font-size: 6.4cqw;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--red);
+  line-height: 1.1;
+}
+.runsheet { display: flex; flex-direction: column; gap: 4.6cqw; }
+.runsheet li {
+  display: flex;
+  align-items: baseline;
+  font-size: 4.3cqw;
+  line-height: 1.32;
+  gap: 0;
+}
+.runsheet .t {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--navy);
+  flex: 0 0 auto;
+}
+.runsheet .w { flex: 1 1 auto; }
+.runsheet .dots { flex: 0 0 1.6em; min-width: 1.6em; margin: 0 0.5em; }
+.board__foot {
+  font-size: 3.7cqw;
+  line-height: 1.35;
+  color: var(--soot-soft);
+}
+
+/* leader dots, the price-board device */
+.dots {
+  flex: 1 1 auto;
+  min-width: 1.5em;
+  align-self: baseline;
+  border-bottom: 2px dotted var(--rule);
+  margin: 0 0.55em;
+  transform: translateY(-0.3em);
+}
+
+/* ---------- sections ---------- */
+/* Rhythm from the seed's digit gaps: long quiet runs, then tight clusters. */
+.section {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 9vw, 7rem) var(--gutter) 0;
+}
+.section--quiet { padding-top: clamp(4rem, 10vw, 7.5rem); }
+
+.prose { max-width: var(--measure); }
+.prose p + p { margin-top: 1.15em; }
+.prose p { font-size: clamp(var(--t-base), 1.7vw, 1.375rem); line-height: 1.6; }
+
+.section__sub {
+  max-width: 34ch;
+  color: var(--soot-soft);
+  margin-top: -0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- specials ---------- */
+.specials {
+  display: grid;
+  gap: 2.25rem 3.5rem;
+}
+@media (min-width: 46rem) { .specials { grid-template-columns: 1fr 1fr; } }
+
+.special__line {
+  display: flex;
+  align-items: baseline;
+  font-size: var(--t-md);
+  line-height: 1.25;
+}
+.special__name { font-weight: 700; flex: 0 1 auto; }
+.special__price {
+  flex: 0 0 auto;
+  font-weight: 700;
+  color: var(--red);
+  font-size: var(--t-base);
+  white-space: nowrap;
+}
+.special__who {
+  margin-top: 0.25rem;
+  font-size: var(--t-base);
+  font-weight: 500;
+  color: var(--navy);
+}
+.special__what {
+  margin-top: 0.55rem;
+  color: var(--soot-soft);
+  max-width: 40ch;
+}
+
+/* ---------- what you get ---------- */
+.gets {
+  display: grid;
+  gap: 2.25rem 3.5rem;
+}
+@media (min-width: 52rem) { .gets { grid-template-columns: repeat(3, 1fr); } }
+.gets h3 {
+  font-size: var(--t-md);
+  font-weight: 700;
+  line-height: 1.25;
+  border-top: 3px solid var(--red);
+  padding-top: 0.8rem;
+}
+.gets p { margin-top: 0.6rem; color: var(--soot-soft); }
+
+/* ---------- footer ---------- */
+.foot {
+  margin-top: clamp(4.5rem, 12vw, 9rem);
+  border-top: 2px solid var(--rule);
+}
+.foot__inner {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 2.5rem var(--gutter) 3.5rem;
+  display: grid;
+  gap: 1.75rem 3rem;
+  font-size: var(--t-sm);
+  color: var(--soot-soft);
+  line-height: 1.7;
+}
+@media (min-width: 46rem) { .foot__inner { grid-template-columns: repeat(3, 1fr); } }
+.foot__name {
+  font-weight: 700;
+  color: var(--soot);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.foot a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.foot__social { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+
+/* ---------- small screens ---------- */
+@media (max-width: 46rem) {
+  .signhead--a img { max-width: 20rem; }
+  .signhead--b img { max-width: 14.8rem; }
+  .signhead--c img { max-width: 20rem; }
+  .signhead--d img { max-width: 15.5rem; }
+  .board { max-width: 22rem; }
+  .btn { flex: 1 1 auto; text-align: center; }
+  /* Keep the item, dots and price on one line at phone widths. */
+  .special__line { font-size: var(--t-base); }
+  .special__price { font-size: var(--t-sm); }
+  .special__who { font-size: var(--t-sm); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,393 @@
+<!doctype html>
+<!-- ABOUTME: Template for the sprint page. scripts/build.py fills the double-brace placeholders -->
+<!-- ABOUTME: from the four designs' Markdown and writes index.html at the repo root. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Friday design sprint</title>
+<meta name="description" content="One afternoon, one brief, four Claude Fable 5.1 sessions. A test of the model and of a method for getting real design out of an AI, run on the AI Friday homepage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="site/styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <p class="dateline">AI Friday, New Orleans. Sprint run September 2, 2026.</p>
+  <h1>Four homepage directions, one afternoon, one model</h1>
+  <p class="dek">This isn't a redesign of <a href="https://aifri.day">aifri.day</a>. It's a test run: could Claude Fable 5.1, pointed at the AI&nbsp;Friday homepage with the method from Anshu Chimala's <a href="https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world">How to turn your AI into a world-class designer</a>, come back with directions worth arguing about? Four Claude Code sessions ran in parallel, each with the same brief and a different direction. This page shows how the four came to be, the brief and prompts they got, and what they built.</p>
+</header>
+
+<section class="wall" aria-label="The four builds">
+<a class="wall-frame" href="#01-shotgun-house"><img src="site/shots/01-shotgun-house-desktop.webp" alt="" width="1440" height="900"><span class="wall-label"><b>01</b> Shotgun house</span></a>
+<a class="wall-frame" href="#02-front-porch"><img src="site/shots/02-front-porch-desktop.webp" alt="" width="1440" height="900"><span class="wall-label"><b>02</b> Front porch</span></a>
+<a class="wall-frame" href="#03-shop-sign"><img src="site/shots/03-shop-sign-desktop.webp" alt="" width="1440" height="900"><span class="wall-label"><b>03</b> Shop sign</span></a>
+<a class="wall-frame" href="#04-combined"><img src="site/shots/04-combined-desktop.webp" alt="" width="1440" height="900"><span class="wall-label"><b>04</b> Combined</span></a>
+  <p class="wall-caption">Each frame opens the exhibit below. Every build is a single static page with its imagery generated on the spot.</p>
+</section>
+
+<section class="process" id="how">
+  <h2>How we got to four</h2>
+  <p class="lede">Everything here happened in one claude.ai conversation with Fable 5.1 before any code was written. The <a href="source/parent-chat.md">full transcript</a> is in the repo; this is the short version.</p>
+
+  <ol class="steps">
+    <li>
+      <h3>Start with a feeling, not a mission</h3>
+      <p>Andrew opened with the article attached and a three-step sketch: come up with bold design languages, choose one, craft a prompt for another agent to build it, then run a creative feedback loop. Claude agreed with the arc and added a step zero.</p>
+      <blockquote><p>"Help people build more with AI in New Orleans" is a mission, not yet a feeling. Is it "you're welcome here even if you've never written code," or "there's a real scene here and you're missing it," or "this is where serious builders in the city hang out"? Those lead to very different visual worlds.</p><cite>Claude</cite></blockquote>
+      <p>It also named the trap early: New Orleans is the biggest design asset and the easiest way to look like a tourist board.</p>
+    </li>
+
+    <li>
+      <h3>Name the audience and the one action</h3>
+      <p>Three questions. Who is the homepage for? What should a first-time visitor do? Is anything fixed?</p>
+      <blockquote><p>That's the problem, I think all of the above! For now, we want to invite AI curious or interested people. But our initial goal is getting as many people as possible to get started building but also for people using it to get tips and tricks. It is NOT targeted at a technical audience but generally speaking more people are in knowledge work/use a computer all day.</p><cite>Andrew</cite></blockquote>
+      <p>The action: "Not sure yet." Fixed constraints: none. From that, Claude proposed the feeling that became the brief's spine, <em>this is for you, and it's happening here</em>, and picked RSVP to the next meetup as the primary action, because a Friday, a room, and a date are concrete in a way a Slack invite isn't. It also ruled out the default every AI-community site drifts toward: dark mode, monospace, terminal.</p>
+    </li>
+
+    <li>
+      <h3>Fifteen sparks, deliberately shallow</h3>
+      <p>The article's Discover stage says go broad before going deep, and let your own reactions do the choosing. Claude listed fifteen design languages in one breath. The three Andrew picked are marked.</p>
+      <ul class="sparks">
+        <li>Bulletin board</li>
+        <li class="picked">Shotgun house</li>
+        <li class="picked">Front porch</li>
+        <li class="picked">Hand-painted shop sign</li>
+        <li>Lab notebook</li>
+        <li>Recipe card</li>
+        <li>Community radio</li>
+        <li>Almanac</li>
+        <li>Public library</li>
+        <li>Transit map</li>
+        <li>Zine</li>
+        <li>Community garden</li>
+        <li>Sub-tropical light</li>
+        <li>Museum wall labels</li>
+        <li>Playground</li>
+      </ul>
+      <blockquote><p>Ones I love: Shotgun house. This is super interesting! Front porch. Very familier new orleans scene. Think Mardi Gras and Jazz Fest. Hanging outside with a drink. Hand painted shop sign. Again, very new orleans.</p><cite>Andrew</cite></blockquote>
+    </li>
+
+    <li>
+      <h3>Three picks turn out to be three layers</h3>
+      <blockquote><p>You didn't pick three competing looks, you picked three <em>layers</em>. Shotgun house is a structure, front porch is a scene, and shop sign is a type system. They could be three separate sites, or one site. That makes the parallel-sessions idea even better: run each alone, plus a fourth that combines them, and see which one surprises you.</p><cite>Claude</cite></blockquote>
+      <p>Claude sharpened each pick into a direction with its own trap named: a 3D dollhouse, stock Southern hospitality, a Western saloon. Then it asked three questions that would decide the prompts.</p>
+      <dl class="qa">
+        <div><dt>Does the shotgun house have to be read literally, or is it enough that locals feel it?</dt><dd>"I'm not sure :)" Claude chose literal, on the grounds that with four sessions running, the bold version is the one worth seeing.</dd></div>
+        <div><dt>Is the porch warm and quiet, or warm and lively?</dt><dd>"Warm and lively."</dd></div>
+        <div><dt>Does the whole page get lettered, or just headlines and one big sign?</dt><dd>"I think the whole page lettered will be distracting." Headlines only.</dd></div>
+      </dl>
+      <blockquote><p>Perhaps we do four prompts/version. One of each of these and then one trying to combine. I will build with Claude Code. Again, make sure you encapsulate guidance from the article.</p><cite>Andrew</cite></blockquote>
+    </li>
+
+    <li>
+      <h3>One brief, four prompts, a critic, and a polish list</h3>
+      <p>Claude wrote a shared brief (the CLAUDE.md every session reads first), one direction prompt per session, a critic-loop prompt, and a polish checklist for a human to run last. It kept a table of where each of the article's techniques landed.</p>
+      <table class="techniques">
+        <thead><tr><th>Technique from the article</th><th>Where it landed</th></tr></thead>
+        <tbody>
+          <tr><td>Seed strings for variety</td><td>Every direction prompt, step 1</td></tr>
+          <tr><td>Ambitious, specific prompts</td><td>Every direction prompt</td></tr>
+          <tr><td>Critic subagent feedback loop</td><td>Critic loop</td></tr>
+          <tr><td>Image generation</td><td>Setup plus every direction prompt</td></tr>
+          <tr><td>Video generation</td><td>Skipped for the proof of concept; noted for the polish pass</td></tr>
+          <tr><td>Cut what doesn't add value</td><td>Polish pass</td></tr>
+          <tr><td>Remove AI tells</td><td>Critic loop plus polish pass</td></tr>
+          <tr><td>Rewrite copy by hand</td><td>Shared brief plus polish pass</td></tr>
+        </tbody>
+      </table>
+      <p>Three calls Claude made on its own and flagged: the shotgun house goes literal; the tourist-trap list (beads, fleur-de-lis, jazz iconography, purple, green and gold, the French Quarter) is hard-banned in the brief; the critic loop stops after two iterations so no agent burns tokens chasing a score. Then it packaged the whole thing as a folder tree with a launcher, and Andrew ran it: four Claude Code sessions in four tmux windows, each on Fable 5.1, each generating its imagery through the OpenAI Codex CLI. Three of the windows died on launch when four instances started at the same instant. They were relaunched by hand.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="brief" id="brief">
+  <h2>The brief</h2>
+  <p class="lede">Every session got the same CLAUDE.md before its direction prompt. Placeholder meetup facts, invented member projects, a hard list of what New Orleans is not allowed to look like, and an instruction to stop and say so rather than fake textures in CSS if image generation wasn't available.</p>
+  <details class="doc" open>
+    <summary>CLAUDE.md, the shared design brief</summary>
+    <div class="sheet">
+<h1>AI Friday — design brief</h1>
+<p>AI Friday exists to help people in New Orleans build more with AI. We want to create more builders in this city. Today it is two things: a monthly meetup in New Orleans, and a Slack community where people share what they're making. Later it will also publish useful content, so the design should have room for that without featuring it now.</p>
+<h2>Who this is for</h2>
+<p>AI-curious knowledge workers: people who use a computer all day, are interested in AI, and are not developers. Many of them quietly assume "this isn't for me." Some already use AI and want tips and tricks. This site is NOT aimed at a technical audience.</p>
+<h2>The feeling</h2>
+<p>"This is for you, and it's happening here."
+Permission, momentum, and place, in that order. Someone should feel invited within three seconds.</p>
+<h2>Actions</h2>
+<p>Primary: RSVP to the next meetup. It is a real Friday, a real room, a real date.
+Secondary: Join the Slack.
+The site is a door, not a hub. Keep it to one page.</p>
+<h2>Placeholder facts (the owner will replace these)</h2>
+<p>Next meetup: Friday, October 2, 2026, 5:30pm. Venue: TBD, New Orleans.
+Slack: link to "#" for now.
+Member projects: invent 3–4 plausible ones built by non-developers (a lawyer's intake bot, a teacher's lesson generator, a restaurant's scheduling helper, etc.).</p>
+<h2>Sections (minimum)</h2>
+<ol>
+<li>The invitation: next meetup date, place, and a one-line reason to come. This is the hero.</li>
+<li>What AI Friday is, in a few sentences.</li>
+<li>What people are building: 3–4 short example projects from members.</li>
+<li>What you'll walk away with: 3 concrete things a first-timer gets.</li>
+<li>Join the Slack.</li>
+<li>Footer: location, contact, socials.</li>
+</ol>
+<h2>Anti-goals</h2>
+<ul>
+<li>Not a developer tool. No dark mode, no monospace, no terminal or code aesthetics.</li>
+<li>Not a SaaS landing page. No "features" grid, no pricing-page rhythm.</li>
+<li>Not a tourist brochure. Do NOT use: Mardi Gras beads, fleur-de-lis, jazz iconography, masks, purple/green/gold, Bourbon Street, "Big Easy," "laissez les bons temps rouler," or any French Quarter imagery. New Orleans should be felt the way a local feels it, not sold the way a visitor sees it.</li>
+</ul>
+<h2>Copy</h2>
+<p>Write real copy, not lorem ipsum, so the design can be judged. But treat every line as a placeholder: a human will rewrite all of it. Keep it short and plain. No em-dash-heavy AI cadence, no "unlock," "empower," "supercharge," "journey," or "community-driven."</p>
+<h2>Image generation</h2>
+<p>Use the Codex CLI for image generation. It is already installed and logged in; make sure it bills the subscription, not an API key. If it isn't available, stop and tell me rather than faking imagery with CSS. Save generated assets in ./assets/.</p>
+<h2>Tech</h2>
+<p>A single static page: index.html, styles.css, script.js, assets/. No framework, no build step. We are evaluating the design, not the stack. Must look right on mobile and desktop. Verify your work frame-by-frame in a browser (use a headless browser or Playwright screenshots if no display is available), not just by reading the code.</p>
+<h2>Working agreement</h2>
+<ul>
+<li>Write a short DESIGN-NOTE.md before coding, describing the creative direction.</li>
+<li>When the build is done, screenshot desktop and mobile into ./screenshots/, write a one-paragraph NOTES.md on what you tried and what you'd do next, then stop and wait. Do NOT run CRITIC.md until asked.</li>
+</ul>
+    </div>
+  </details>
+  <details class="doc">
+    <summary>CRITIC.md, the feedback loop. Not run yet.</summary>
+    <div class="sheet">
+<p>I want you to improve this design. To figure out what to focus on, use a Claude Fable 5.1 subagent as a design critic.</p>
+<p>Follow this procedure at each iteration:
+- Capture a screenshot of the current design at desktop width and one at mobile width.
+- Invoke the critic in a fresh context with just the screenshots and the reference images in ./refs (if any). Do not give it the code, implementation details, the design brief, or earlier critiques.
+- Ask it to identify the aesthetic this design is going for, imagine how a top design studio would execute that same aesthetic for a neighborhood meetup, and outline the biggest gaps.
+- If ./refs has images, ask it to rank the reference images and our screenshot together by polish and taste level. Either way, have it give our design a score out of 10 against that studio-level bar.</p>
+<p>Give the critic this guidance in its prompt:
+- Think high-level about structure and composition, then look at the fine details.
+- Watch for patterns that feel overdone or obviously AI-generated and penalize them: eyebrow labels, generic gradients, excessive cards and containers, too many fonts or text styles, glow effects, decorative elements that serve no purpose, copy that overexplains.
+- Watch for tourist-brochure New Orleans and penalize it hard.
+- Watch for anything that would make a non-technical person feel this isn't for them.
+- Provide tight, specific feedback, not vague prose.
+- Be bold and opinionated, not safe.</p>
+<p>Do at most two iterations, then stop. Save before/after screenshots to ./screenshots/ and both critiques to CRITIQUES.md so I can see whether it's converging. Do not put a target score in the critic prompt; keep its scoring objective. Use the same critic prompt each time.</p>
+    </div>
+  </details>
+  <details class="doc">
+    <summary>POLISH.md, the pass a person does last</summary>
+    <div class="sheet">
+<h1>Polish pass (you, not the agent)</h1>
+<p>Do this on the one or two directions that survive the critic loop.</p>
+<p><strong>Cut.</strong> For every element on the page ask what it's earning. AI adds and rarely removes. Expect to delete a third of it. Prompt: "Remove X, Y, and Z. Tighten the remaining spacing. Don't add anything to fill the gap."</p>
+<p><strong>Hunt the tells.</strong> Walk the list: eyebrow text, generic gradients, cards and containers, font and style sprawl, italic and accent-color overuse. Don't ban them up front; find each one, ask for an alternative, then judge.</p>
+<p><strong>Rewrite the copy.</strong> Every line, by hand, in your voice. This matters more for AI Friday than for a product site: the voice is the brand and the audience is people you'll be standing in a room with. The agent's copy is scaffolding.</p>
+<p><strong>Then, and only then, motion.</strong> Once a direction is chosen, the porch scene is a good candidate for a looping generated video clip (fal.ai). Not before.</p>
+<p><strong>Save the prompts that didn't work.</strong> Re-run them when the next model ships.</p>
+    </div>
+  </details>
+</section>
+
+<section class="exhibits" id="directions">
+  <h2>The four directions</h2>
+  <p class="lede">Each session read the brief, got one direction prompt, generated a random string to settle every decision the prompt left open, wrote a design note before touching code, generated its imagery, built a single static page, checked it frame by frame in a browser, and wrote notes. None has been through the critic loop yet. The copy on every page is scaffolding a person will rewrite.</p>
+<article class="exhibit" id="01-shotgun-house">
+  <header class="exhibit-head">
+    <span class="exhibit-num">01</span>
+    <h3>Shotgun house</h3>
+    <p class="exhibit-line">One long walk through five rooms. The Slack is the kitchen at the back.</p>
+  </header>
+  <div class="exhibit-body">
+    <a class="frame frame--desktop" href="designs/01-shotgun-house/"><img src="site/shots/01-shotgun-house-desktop.webp" alt="Shotgun house homepage at desktop width" loading="lazy" width="1440" height="900"></a>
+    <aside class="placard">
+      <dl class="facts">
+<div><dt>Layer</dt><dd>Structure</dd></div>
+<div><dt>Type</dt><dd>Fraunces and Libre Franklin</dd></div>
+<div><dt>Seed string</dt><dd>192 characters</dd></div>
+<div><dt>Generated images</dt><dd>11</dd></div>
+<div><dt>Status</dt><dd>Built, not yet critiqued</dd></div>
+      </dl>
+      <a class="frame frame--mobile" href="designs/01-shotgun-house/"><img src="site/shots/01-shotgun-house-mobile.webp" alt="Shotgun house homepage at phone width" loading="lazy" width="780" height="1688"></a>
+      <nav class="exhibit-links">
+<a class="button" href="designs/01-shotgun-house/">Open the design</a>
+<a href="designs/01-shotgun-house/notes.html">Design note and build notes</a>
+<a href="designs/01-shotgun-house/screenshots/desktop-full.webp">Full page, desktop</a>
+<a href="designs/01-shotgun-house/screenshots/mobile-full.webp">Full page, phone</a>
+      </nav>
+    </aside>
+  </div>
+  <details class="doc">
+    <summary>The prompt this session received</summary>
+    <div class="sheet">
+<p>Read CLAUDE.md first.</p>
+<p>Build the AI Friday homepage as a shotgun house.</p>
+<p>The page is one long vertical scroll, and every section is a room, in the order you'd actually walk through one from the street:</p>
+<ul>
+<li>Front room: the invitation. Next meetup date, place, RSVP. This is the first thing you see through the front door.</li>
+<li>Second room: what AI Friday is.</li>
+<li>Third room: what people are building.</li>
+<li>Fourth room: what you'll walk away with.</li>
+<li>Kitchen, at the very back: the Slack. That's where the real conversation happens, and it's the last room in the house.</li>
+<li>Back step: footer.</li>
+</ul>
+<p>Doorways are the section transitions. Scrolling should feel like walking through the house, not paging through a website. Go literal: illustrate the architecture, the thresholds, the changing light as you move deeper in. This is the bold version and I want to see it. But the structure must still work if the illustration were removed: the narrow single column, the sequence of rooms, and the sense of arriving at the kitchen should survive on their own.</p>
+<p>Seed-string decisions: exact palette, type pairing, how the light changes room to room, wall texture, the rhythm of the doorways.
+Imagery to generate: doorframes, floorboards, wall texture, the view out the back door. Consider layering images with subtle depth or parallax so the rooms feel physical.</p>
+<p>Break the rules of what a homepage looks like, but it still has to work as a homepage.</p>
+<p>Follow this procedure:
+1. Generate a long, random alphanumeric string using a shell script. Use it as inspiration for every decision the brief doesn't already make. Look beyond the surface for subpatterns, special numbers, anything that inspires you. Don't reveal the string in the design.
+2. Write DESIGN-NOTE.md defining the creative direction before writing any code.
+3. Generate the imagery with the Codex CLI as described in CLAUDE.md. Do not fake textures, light, or surfaces with CSS gradients, box shadows, or filters.
+4. Build it. Verify frame-by-frame in the browser at mobile and desktop widths.
+5. Screenshot, write NOTES.md, and stop.</p>
+<p>The first three seconds should say: you're invited, this is happening, it's here.</p>
+    </div>
+  </details>
+</article>
+
+<article class="exhibit" id="02-front-porch">
+  <header class="exhibit-head">
+    <span class="exhibit-num">02</span>
+    <h3>Front porch</h3>
+    <p class="exhibit-line">A warm evening, a few people already there, and one empty chair.</p>
+  </header>
+  <div class="exhibit-body">
+    <a class="frame frame--desktop" href="designs/02-front-porch/"><img src="site/shots/02-front-porch-desktop.webp" alt="Front porch homepage at desktop width" loading="lazy" width="1440" height="900"></a>
+    <aside class="placard">
+      <dl class="facts">
+<div><dt>Layer</dt><dd>Scene</dd></div>
+<div><dt>Type</dt><dd>Newsreader and Work Sans</dd></div>
+<div><dt>Seed string</dt><dd>192 characters</dd></div>
+<div><dt>Generated images</dt><dd>7</dd></div>
+<div><dt>Status</dt><dd>Session still running</dd></div>
+      </dl>
+      <a class="frame frame--mobile" href="designs/02-front-porch/"><img src="site/shots/02-front-porch-mobile.webp" alt="Front porch homepage at phone width" loading="lazy" width="780" height="1688"></a>
+      <nav class="exhibit-links">
+<a class="button" href="designs/02-front-porch/">Open the design</a>
+<a href="designs/02-front-porch/notes.html">Design note and build notes</a>
+      </nav>
+    </aside>
+  </div>
+  <details class="doc">
+    <summary>The prompt this session received</summary>
+    <div class="sheet">
+<p>Read CLAUDE.md first.</p>
+<p>Build the AI Friday homepage as a front porch on a warm, lively evening.</p>
+<p>Not a party. A porch where a few people are already sitting, someone's laughing, there's music coming from somewhere down the block, and there's an empty chair waiting for you. Golden hour tipping into blue hour. The whole page is that scene, and the interface is hospitality: the RSVP is "pull up a chair," the Slack is "come by anytime," the meetup is something you're invited to, not something you register for.</p>
+<p>Local detail to build around: haint blue, the pale blue that porch ceilings are painted across the city. Make it the primary color. It's distinctive and quiet and locals will recognize it without a single cliché. Pair it with the warm colors of evening light, wood, and whatever is in people's glasses.</p>
+<p>The imagery must be photographic or painterly. No vector illustration, no flat icons. The porch should feel like a real place with real light. Lively means people, movement, warmth. It does not mean a crowd, beads, or a bar.</p>
+<p>Generate the hero image first and let it dictate the palette and composition of everything below it. Generate supporting imagery for the other sections only where it adds warmth; empty space is fine on a porch. The page needs a real system beneath the scene: consistent type, spacing, and components that carry the same warmth without the photo doing all the work.</p>
+<p>Seed-string decisions: secondary palette, type pairing, exact time of evening, style of the house, what's on the table, how the sections are arranged on or around the porch.</p>
+<p>Follow this procedure:
+1. Generate a long, random alphanumeric string using a shell script. Use it as inspiration for every decision the brief doesn't already make. Look beyond the surface for subpatterns, special numbers, anything that inspires you. Don't reveal the string in the design.
+2. Write DESIGN-NOTE.md defining the creative direction before writing any code.
+3. Generate the imagery with the Codex CLI as described in CLAUDE.md. Do not fake textures, light, or surfaces with CSS gradients, box shadows, or filters.
+4. Build it. Verify frame-by-frame in the browser at mobile and desktop widths.
+5. Screenshot, write NOTES.md, and stop.</p>
+<p>The first three seconds should say: you're invited, this is happening, it's here.</p>
+    </div>
+  </details>
+</article>
+
+<article class="exhibit" id="03-shop-sign">
+  <header class="exhibit-head">
+    <span class="exhibit-num">03</span>
+    <h3>Shop sign</h3>
+    <p class="exhibit-line">Hand-painted corner-store signage for the headlines, a quiet sans for the rest.</p>
+  </header>
+  <div class="exhibit-body">
+    <a class="frame frame--desktop" href="designs/03-shop-sign/"><img src="site/shots/03-shop-sign-desktop.webp" alt="Shop sign homepage at desktop width" loading="lazy" width="1440" height="900"></a>
+    <aside class="placard">
+      <dl class="facts">
+<div><dt>Layer</dt><dd>Type</dd></div>
+<div><dt>Type</dt><dd>Painted lettering and Libre Franklin</dd></div>
+<div><dt>Seed string</dt><dd>128 characters</dd></div>
+<div><dt>Generated images</dt><dd>8</dd></div>
+<div><dt>Status</dt><dd>Built, not yet critiqued</dd></div>
+      </dl>
+      <a class="frame frame--mobile" href="designs/03-shop-sign/"><img src="site/shots/03-shop-sign-mobile.webp" alt="Shop sign homepage at phone width" loading="lazy" width="780" height="1688"></a>
+      <nav class="exhibit-links">
+<a class="button" href="designs/03-shop-sign/">Open the design</a>
+<a href="designs/03-shop-sign/notes.html">Design note and build notes</a>
+<a href="designs/03-shop-sign/screenshots/desktop-full.webp">Full page, desktop</a>
+<a href="designs/03-shop-sign/screenshots/mobile-full.webp">Full page, phone</a>
+      </nav>
+    </aside>
+  </div>
+  <details class="doc">
+    <summary>The prompt this session received</summary>
+    <div class="sheet">
+<p>Read CLAUDE.md first.</p>
+<p>Build the AI Friday homepage using hand-painted shop signage as the type system.</p>
+<p>The vernacular is New Orleans corner store, po-boy shop, laundromat, neighborhood grocery: enamel color on wood or brick, lettering done by a sign painter, a drop shadow that was painted not rendered, "COLD DRINKS" and "OPEN" and hand-lettered price boards. It is NOT Western saloon, NOT rustic farmhouse, NOT hipster café. If it starts to feel like a coffee shop chalkboard, it's wrong.</p>
+<p>Signage is for headlines only. One big painted sign is the hero: the next meetup, painted like it's hanging over a shop door. Each section header is a smaller painted sign. The month's schedule reads like a menu board. Member projects are the "specials." Everything else, body copy, buttons, form fields, footer, is set in a clean, quiet sans-serif with plenty of air. The signs are the personality; the rest of the page gets out of their way. Lettering the whole page would be exhausting; don't.</p>
+<p>This direction lives or dies on texture. Every painted surface must be generated: the sign boards, the painted lettering, the wear at the edges, the wood or brick behind it. A display font with a CSS text-shadow will look like a template and is not acceptable. Generate the signs as images, or generate the surfaces and composite live text over them if the copy needs to stay editable; explain which you chose and why in DESIGN-NOTE.md. Generate the hero sign first and let it set the palette.</p>
+<p>Seed-string decisions: the enamel palette, sign shapes, surface material, the sans-serif pairing, layout rhythm.</p>
+<p>Follow this procedure:
+1. Generate a long, random alphanumeric string using a shell script. Use it as inspiration for every decision the brief doesn't already make. Look beyond the surface for subpatterns, special numbers, anything that inspires you. Don't reveal the string in the design.
+2. Write DESIGN-NOTE.md defining the creative direction before writing any code.
+3. Generate the imagery with the Codex CLI as described in CLAUDE.md. Do not fake textures, light, or surfaces with CSS gradients, box shadows, or filters.
+4. Build it. Verify frame-by-frame in the browser at mobile and desktop widths.
+5. Screenshot, write NOTES.md, and stop.</p>
+<p>The first three seconds should say: you're invited, this is happening, it's here.</p>
+    </div>
+  </details>
+</article>
+
+<article class="exhibit" id="04-combined">
+  <header class="exhibit-head">
+    <span class="exhibit-num">04</span>
+    <h3>Combined</h3>
+    <p class="exhibit-line">The house is the sequence, the porch is the feeling, the signs are the voice.</p>
+  </header>
+  <div class="exhibit-body">
+    <a class="frame frame--desktop" href="designs/04-combined/"><img src="site/shots/04-combined-desktop.webp" alt="Combined homepage at desktop width" loading="lazy" width="1440" height="900"></a>
+    <aside class="placard">
+      <dl class="facts">
+<div><dt>Layer</dt><dd>All three, one job each</dd></div>
+<div><dt>Type</dt><dd>Libre Franklin and Karla</dd></div>
+<div><dt>Seed string</dt><dd>192 characters</dd></div>
+<div><dt>Generated images</dt><dd>13</dd></div>
+<div><dt>Status</dt><dd>Built, not yet critiqued</dd></div>
+      </dl>
+      <a class="frame frame--mobile" href="designs/04-combined/"><img src="site/shots/04-combined-mobile.webp" alt="Combined homepage at phone width" loading="lazy" width="780" height="1688"></a>
+      <nav class="exhibit-links">
+<a class="button" href="designs/04-combined/">Open the design</a>
+<a href="designs/04-combined/notes.html">Design note and build notes</a>
+<a href="designs/04-combined/screenshots/desktop-00-full-page.webp">Full page, desktop</a>
+<a href="designs/04-combined/screenshots/mobile-00-full-page.webp">Full page, phone</a>
+      </nav>
+    </aside>
+  </div>
+  <details class="doc">
+    <summary>The prompt this session received</summary>
+    <div class="sheet">
+<p>Read CLAUDE.md first.</p>
+<p>Build the AI Friday homepage combining three ideas into one design. This is the ambitious one and it may not work. Try it anyway.</p>
+<p>Structure: a shotgun house. One long vertical scroll where each section is a room in the order you'd walk through one: front room (the invitation), middle rooms (what AI Friday is, what people are building, what you'll walk away with), kitchen at the back (the Slack), back step (footer). Doorways are the transitions. Scrolling should feel like walking through the house.</p>
+<p>Scene: the front room is a front porch on a warm, lively evening. Golden hour into blue hour, a few people already there, an empty chair, music from down the block. The RSVP is "pull up a chair." Haint blue, the pale blue of the city's porch ceilings, is the primary color. As you move deeper into the house the light changes and the scene gives way to the rooms.</p>
+<p>Type: hand-painted shop signage for headlines only. Corner store, po-boy shop, laundromat vernacular; not saloon, not farmhouse, not café. One big painted sign at the front announces the next meetup. Each room's header is a smaller sign. Everything else is a clean, quiet sans-serif.</p>
+<p>The risk here is clutter: three ideas fighting for attention. Resolve it by giving each idea one job. The house is the structure and nothing else. The porch is the feeling and lives mostly in the first screen. The signs are the voice and appear only as headers. If any of them tries to do more than its job, cut it back. Explain in DESIGN-NOTE.md how the three hand off to each other, and in NOTES.md what fought with what.</p>
+<p>Imagery to generate: the porch scene, the architectural surfaces, the painted signs.</p>
+<p>Follow this procedure:
+1. Generate a long, random alphanumeric string using a shell script. Use it as inspiration for every decision the brief doesn't already make. Look beyond the surface for subpatterns, special numbers, anything that inspires you. Don't reveal the string in the design.
+2. Write DESIGN-NOTE.md defining the creative direction before writing any code.
+3. Generate the imagery with the Codex CLI as described in CLAUDE.md. Do not fake textures, light, or surfaces with CSS gradients, box shadows, or filters.
+4. Build it. Verify frame-by-frame in the browser at mobile and desktop widths.
+5. Screenshot, write NOTES.md, and stop.</p>
+<p>The first three seconds should say: you're invited, this is happening, it's here.</p>
+    </div>
+  </details>
+</article>
+
+</section>
+
+<section class="next" id="next">
+  <h2>What happens next</h2>
+  <p>The critic loop runs in each session: a fresh Fable 5.1 subagent sees only screenshots, names the aesthetic, imagines how a top studio would execute it for a neighborhood meetup, scores it out of ten, and the session revises. Two rounds, then it stops. Andrew's gut reactions go back to the sprint conversation for a sharpening round. Whatever survives gets the polish pass by hand: cut a third of it, hunt the tells, rewrite every line. Nothing here goes live until then.</p>
+</section>
+
+<footer class="colophon">
+  <p>Sprint conversation and critic: Claude Fable 5.1 on claude.ai. Builds: Claude Fable 5.1 in Claude Code. Imagery: OpenAI Codex CLI. Method: <a href="https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world">How to turn your AI into a world-class designer</a> by Anshu Chimala, Lenny's Newsletter, September 1, 2026. This page and its build scripts: Claude Fable 5.1 in Claude Code, from Andrew's notes.</p>
+  <p><a href="https://github.com/andrewedunn/aifriday-fable5.1-design">Source on GitHub</a>. <a href="https://aifri.day">AI Friday</a> is a monthly meetup and a Slack for people in New Orleans who want to build more with AI.</p>
+</footer>
+
+</body>
+</html>

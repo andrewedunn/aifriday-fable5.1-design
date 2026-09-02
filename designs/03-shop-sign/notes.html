@@ -1,0 +1,242 @@
+<!doctype html>
+<!-- ABOUTME: Template for a design's notes page: DESIGN-NOTE.md and NOTES.md as the -->
+<!-- ABOUTME: session wrote them, rendered from Markdown by scripts/build.py. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03 Shop sign: design note</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="../../site/styles.css">
+</head>
+<body class="notes-page">
+<header class="notes-head">
+  <a class="back" href="../../index.html#03-shop-sign">AI Friday design sprint</a>
+  <p class="notes-kicker">03 Shop sign</p>
+  <h1>Design note and build notes</h1>
+  <p class="muted">Written by the Claude Code session that built this direction. The design note came before any code; the build notes came after. Unedited.</p>
+  <p><a class="button" href="index.html">Open the design</a></p>
+</header>
+<main class="sheet sheet--page">
+<h1>DESIGN-NOTE — AI Friday</h1>
+<h2>The one-line direction</h2>
+<p>A corner store that happens to be about AI. The signs do the talking; the rest of the
+page is a clean sheet of paper taped to the wall next to them.</p>
+<h2>What the vernacular actually is</h2>
+<p>Not a saloon, not a farmhouse, not a chalkboard. The reference is the <strong>neighborhood
+grocery on a New Orleans corner</strong>: a painted board bolted over the door with the name on
+it, a smaller board underneath with today's fact, and a price list in the window where
+the numbers were hand-lettered by whoever owned the place. Enamel paint on wood, over a
+plaster wall that has been repainted six times. The lettering is confident and slightly
+irregular. The drop shadow is a second pass of paint at a hard offset, never a blur.</p>
+<p>Three things that keep it honest:
+- <strong>The shadow is opaque and offset, never soft.</strong> A sign painter loads a brush; they
+  don't render a Gaussian.
+- <strong>Nothing is level.</strong> Signs are mounted by a person on a ladder. Half a degree off is
+  correct; three degrees is a costume.
+- <strong>Wear is at the edges and the bolts</strong>, where weather and hands actually get to it, not
+  sprayed evenly over the face like a filter.</p>
+<h2>Seed-string decisions</h2>
+<p>A 128-character random string was generated and read for structure. What it decided:</p>
+<ul>
+<li><strong>107 letters to 21 digits (~1:6).</strong> That is the discipline metric for the whole page:
+  roughly one line in six is painted lettering. Everything else is quiet sans. If the
+  ratio creeps up, the page is over-lettered and gets cut back.</li>
+<li><strong>56 uppercase to 51 lowercase — nearly even, uppercase slightly ahead.</strong> Signs are
+  all-caps and get the visual weight; body copy is sentence case and gets the volume.
+  Neither wins outright.</li>
+<li><strong>Exactly two doubled letters in 128 characters (JJ, XX).</strong> A doubled letter <em>is</em> a
+  painted drop shadow. So: the drop shadow is a hard two-color offset, and it appears in
+  exactly two places on the page — the hero sign and the specials sign. The other signs
+  are flat with an outline only.</li>
+<li><strong>The digit gaps run 13, 2, 2, 8, 25, 3, 4, 3, 2, 2, 12, 23, 1, 7 …</strong> — tight pairs
+  separated by long empty stretches, with two very long gaps (25 and 23). That is the
+  layout rhythm literally: <strong>clusters of three or four short items, then a long quiet
+  run of prose with nothing in it.</strong> Two of those quiet runs are the longest blocks on
+  the page.</li>
+<li><strong>3 and 5 tie as the most frequent digits (four each).</strong> Three enamel colors, five
+  values total. Three items in the takeaway list, and the run-of-show reads in
+  half-hour and 30-minute steps.</li>
+<li><strong>Digit sum 95, first digit 3, last digit 9.</strong> Base type size 18px, scale steps at
+  15 / 18 / 21 / 26 / 34 / 46. Sign rotations come off the digit stream in tenths of a
+  degree: -0.3°, +0.6°, -0.5°, +0.3°.</li>
+</ul>
+<h2>Palette — enamel</h2>
+<p>Three enamels and two neutrals. These are the intent going into generation; the hero
+sign is generated first and the final tokens are sampled from it, so the CSS matches the
+paint rather than the paint matching the CSS.</p>
+<table>
+<thead>
+<tr>
+<th>token</th>
+<th>sampled</th>
+<th>where it came from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--red</code></td>
+<td><code>#8e1512</code></td>
+<td>The hero board's painted ground.</td>
+</tr>
+<tr>
+<td><code>--navy</code></td>
+<td><code>#033671</code></td>
+<td>The date band across the hero.</td>
+</tr>
+<tr>
+<td><code>--blue</code></td>
+<td><code>#0241a2</code></td>
+<td>The brighter cobalt on the section slats. Links and the schedule times.</td>
+</tr>
+<tr>
+<td><code>--ochre</code></td>
+<td><code>#e7a533</code></td>
+<td>"NEW ORLEANS" on the hero, and the SPECIALS lettering.</td>
+</tr>
+<tr>
+<td><code>--bone</code></td>
+<td><code>#e3d5b8</code></td>
+<td>The cream the letters are filled with.</td>
+</tr>
+<tr>
+<td><code>--wall</code></td>
+<td><code>#e4dac0</code></td>
+<td>Average of the generated plaster wall.</td>
+</tr>
+<tr>
+<td><code>--soot</code></td>
+<td><code>#1f2228</code></td>
+<td>The painted drop shadow. Not #000.</td>
+</tr>
+</tbody>
+</table>
+<p>Every value above was pulled out of the generated images with an eyedropper after
+the fact. The CSS matches the paint; the paint did not match a CSS spec.</p>
+<p>Explicitly not in the palette: purple, kelly green, and metallic gold, in any
+combination. That trio is the tourist tell. Ochre earns its place because it is the
+color of a price board, and it is used in exactly two places.</p>
+<h2>Surface</h2>
+<p>Two materials, and only two.</p>
+<ol>
+<li><strong>The wall</strong> — flat chalky painted plaster, sun-bleached bone, rolled over older
+   paint. It runs the full page. It is deliberately quiet: it has to hold body copy at
+   18px with plenty of air without fighting it.</li>
+<li><strong>The board</strong> — painted wood with grain, chipped edges, and visible bolt heads. Only
+   the signs and the two panels are board.</li>
+</ol>
+<p>Wood over brick. The corner groceries in this city are wood buildings; brick reads
+warehouse, and warehouse reads tech office.</p>
+<h2>Type</h2>
+<p><strong>Display: generated painted lettering.</strong> Not a font.</p>
+<p><strong>Text: Libre Franklin</strong>, one family, three weights (400 / 500 / 700). Franklin Gothic is
+the American vernacular grotesque — the lineage that sign shops copied out of catalogs
+for eighty years. Using its descendant for the body means the quiet text is a distant
+relative of the loud text instead of a contrast for its own sake. It also has the plain,
+slightly awkward, non-corporate quality this needs. One webfont family total.</p>
+<h2>Images vs. live text — and why</h2>
+<p>Split by how often the copy changes:</p>
+<ul>
+<li><strong>Fully generated images:</strong> the hero sign and the four section signs. There are two
+  hero signs, a wide 3:1 board for desktop and a squarer 4:3 board for phones, swapped
+  with <code>&lt;picture&gt;</code>. A 3:1 sign shrunk to 335px reads as a badge, not as something hanging
+  over a door, and the first three seconds are the whole job. Short, stable,
+  all-caps copy that must be unmistakably hand-painted. Real HTML text ships alongside
+  them for screen readers and for when images fail.</li>
+<li><strong>Generated surface, live text on top:</strong> the run-of-show board and the specials panel.
+  This copy changes every month, and the owner has to be able to edit it in the HTML
+  without regenerating anything. Critically, the live text on those boards is set in
+  Libre Franklin, <em>not</em> dressed up to look painted — a sans-serif price list on a painted
+  board is what the real thing looks like. Nothing on this page fakes a brush.</li>
+<li><strong>Generated background:</strong> the wall.</li>
+</ul>
+<p>No CSS gradient, box-shadow, or filter is used to simulate paint, light, wear, or
+material anywhere on the page.</p>
+<h2>Layout rhythm</h2>
+<p>Following the digit gaps:</p>
+<pre><code>  ┌──────────────────────────────────────────────┐
+  │            [ H E R O   S I G N ]             │   loud
+  │   AI FRIDAY / FRI OCT 2 · 5:30 / NEW ORLEANS │
+  │   one plain line + RSVP        [ run of show │
+  │                                  price board]│
+  ├──────────────────────────────────────────────┤
+  │  [what this is]                              │
+  │  one column of prose, 56ch, nothing in it    │   long quiet run  (gap 25)
+  ├──────────────────────────────────────────────┤
+  │  [SPECIALS]                                  │
+  │  ┌ board ────────────────────────────────┐   │
+  │  │ item · who · one line                 │   │   tight cluster of 4  (2,2)
+  │  │ item · who · one line                 │   │
+  │  └───────────────────────────────────────┘   │
+  ├──────────────────────────────────────────────┤
+  │  [what you get]                              │
+  │  three short things, close together          │   tight cluster of 3
+  ├──────────────────────────────────────────────┤
+  │  [the slack]  one paragraph, one button      │   long quiet run  (gap 23)
+  ├──────────────────────────────────────────────┤
+  │  footer, small, plain                        │
+  └──────────────────────────────────────────────┘
+</code></pre>
+<p>On mobile the signs shrink but never crop, and the run-of-show board moves under the
+hero rather than beside it. The wall keeps running.</p>
+<h2>Signature element</h2>
+<p><strong>The run of show, set as a price board.</strong> Times down the left in a column, leader dots,
+items on the right — the thing in the window that tells you exactly what you are walking
+into at 6:15 before you commit to walking in at 5:30. It is the piece of the page that
+answers "this isn't for me" with a schedule instead of a reassurance.</p>
+<h2>The first three seconds</h2>
+<p>Sign says <strong>AI FRIDAY, NEW ORLEANS</strong> — it's here.
+Sign says <strong>FRI OCT 2 · 5:30</strong> — this is happening.
+One plain sentence under it says you don't need to write code — you're invited.</p>
+<h2>What is deliberately absent</h2>
+<p>No dark mode. No monospace. No feature grid. No eyebrow labels. No cards with borders
+around every paragraph. No icons. No gradient anywhere. No second display font. No beads,
+no fleur-de-lis, no wrought iron, no jazz.</p>
+<h2>Built, and what changed on contact</h2>
+<p>Four things only showed up once it was in a browser:</p>
+<ol>
+<li><strong>The wall tiled with a visible horizontal seam.</strong> Fixed by mirroring the generated
+   plaster into a 1800px tile, so the join has nothing to line up against.</li>
+<li><strong>At 74rem the page had a dead right half.</strong> Pulled to 62rem. The quiet runs are still
+   quiet, but now they read as margin rather than as an unfinished layout.</li>
+<li><strong>Every sign was the same width, so "SPECIALS" had much larger letters than
+   "WHAT THIS IS".</strong> Now each board's width is set by its letter count, which is how a
+   sign shop cuts a board, and the painted cap-height matches across all four.</li>
+<li><strong>The maker credits were set in letterspaced caps and read as template eyebrow
+   labels.</strong> Now plain sentence case.</li>
+</ol>
+<hr>
+<h1>NOTES</h1>
+<p>I generated a 128-character random string and read it for structure rather than surface:
+its 1:6 letter-to-digit ratio set the discipline rule that only about one line in six on
+this page is painted lettering, its near-even upper/lowercase split set signs-versus-body
+weighting, its two doubled letters (JJ, XX) decided that the hard painted drop shadow
+appears in exactly two places, and its digit gaps (long runs of 25 and 23 punctuated by
+tight 2,2 pairs) became the vertical rhythm of clusters and quiet stretches. I wrote
+DESIGN-NOTE.md from that, then generated the hero sign first with the Codex CLI and
+sampled the real palette out of the returned pixels, so the CSS tokens are the paint
+rather than a guess at it. Seven more surfaces followed: four section slats, a blank
+price board, a plaster wall, and later a squarer second hero for phones. Nothing on the
+page uses a CSS gradient, box-shadow, or filter to imitate material. Where copy has to
+stay editable (the run of show, the specials) the board is the generated image and the
+text on top is plain Libre Franklin, which is what a real price list looks like anyway.
+Four things only surfaced in the browser and got fixed there: the wall tiled with a
+visible seam (rebuilt as a mirrored tile), a 74rem page left a dead right half (pulled to
+62rem), all four signs shared one width so their painted letters came out different sizes
+(each board is now cut to its word count), and the maker credits read as template eyebrow
+labels in letterspaced caps (now sentence case). Contrast is 5.8:1 at worst, no image is
+missing alt text, and there is no horizontal overflow at 390, 768, or 1440.</p>
+<p>Next, in order: the wide hero sign is the one asset that has to be regenerated every
+month, so I would write the prompt that produces it into a short README and check the
+date band renders cleanly for a two-digit day. I would build a real RSVP destination
+rather than the <code>#</code> placeholder and decide whether the venue line becomes a live field.
+The specials could carry a small painted price tag per project instead of a red sans
+number, which would be more of the same idea, though it is also exactly the kind of extra
+accessory worth removing. And I would look hard at the two long quiet sections on desktop:
+they are correct per the direction, but a second opinion should confirm they read as
+confidence rather than as an unfinished right column.</p>
+</main>
+</body>
+</html>
