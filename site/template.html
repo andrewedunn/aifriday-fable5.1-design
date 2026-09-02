@@ -5,8 +5,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Friday design sprint</title>
-<meta name="description" content="One afternoon, one brief, four Claude Fable 5.1 sessions. A test of the model and of a method for getting real design out of an AI, run on the AI Friday homepage.">
+<title>Designing with Fable 5.1</title>
+<meta name="description" content="Four Claude Fable 5.1 sessions, one brief, four directions for the AI Friday homepage, using Anshu Chimala's method for getting better design out of an AI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
@@ -15,9 +15,9 @@
 <body>
 
 <header class="masthead">
-  <p class="dateline">AI Friday, New Orleans. Sprint run September 2, 2026.</p>
-  <h1>Four homepage directions, one afternoon, one model</h1>
-  <p class="dek">This isn't a redesign of <a href="https://aifri.day">aifri.day</a>. It's a test run: could Claude Fable 5.1, pointed at the AI&nbsp;Friday homepage with the method from Anshu Chimala's <a href="https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world">How to turn your AI into a world-class designer</a>, come back with directions worth arguing about? Four Claude Code sessions ran in parallel, each with the same brief and a different direction. This page shows how the four came to be, the brief and prompts they got, and what they built.</p>
+  <h1>Designing with Fable 5.1</h1>
+  <p class="dek">I came across Anshu Chimala's <a href="https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world">How to turn your AI into a world-class designer</a> and with the release of Fable 5.1 I wanted to see if I could try to get AI to pump out better design so I spun up four new variations of the <a href="https://aifri.day">AI Friday</a> website.</p>
+  <p class="dek">All of the prompts used are below.</p>
 </header>
 
 <section class="wall" aria-label="The four builds">
@@ -27,26 +27,16 @@
 
 <section class="process" id="how">
   <h2>How we got to four</h2>
-  <p class="lede">Everything here happened in one claude.ai conversation with Fable 5.1 before any code was written. The <a href="https://github.com/andrewedunn/aifriday-fable5.1-design/blob/main/source/parent-chat.md">full transcript</a> is in the repo; this is the short version.</p>
+  <p class="lede">One claude.ai conversation with Fable 5.1, before any code. The <a href="https://github.com/andrewedunn/aifriday-fable5.1-design/blob/main/source/parent-chat.md">full transcript</a> is in the repo.</p>
 
   <ol class="steps">
     <li>
-      <h3>Start with a feeling, not a mission</h3>
-      <p>Andrew opened with the article attached and a three-step sketch: come up with bold design languages, choose one, craft a prompt for another agent to build it, then run a creative feedback loop. Claude agreed with the arc and added a step zero.</p>
-      <blockquote><p>"Help people build more with AI in New Orleans" is a mission, not yet a feeling. Is it "you're welcome here even if you've never written code," or "there's a real scene here and you're missing it," or "this is where serious builders in the city hang out"? Those lead to very different visual worlds.</p><cite>Claude</cite></blockquote>
-      <p>It also named the trap early: New Orleans is the biggest design asset and the easiest way to look like a tourist board.</p>
+      <h3>Feeling first</h3>
+      <p>The ask: rethink the AI Friday site from scratch, using the article. Claude's first move was to pin down what a visitor should feel in three seconds. The line that became the brief: <em>this is for you, and it's happening here.</em> The one action: RSVP to the next meetup.</p>
     </li>
-
     <li>
-      <h3>Name the audience and the one action</h3>
-      <p>Three questions. Who is the homepage for? What should a first-time visitor do? Is anything fixed?</p>
-      <blockquote><p>That's the problem, I think all of the above! For now, we want to invite AI curious or interested people. But our initial goal is getting as many people as possible to get started building but also for people using it to get tips and tricks. It is NOT targeted at a technical audience but generally speaking more people are in knowledge work/use a computer all day.</p><cite>Andrew</cite></blockquote>
-      <p>The action: "Not sure yet." Fixed constraints: none. From that, Claude proposed the feeling that became the brief's spine, <em>this is for you, and it's happening here</em>, and picked RSVP to the next meetup as the primary action, because a Friday, a room, and a date are concrete in a way a Slack invite isn't. It also ruled out the default every AI-community site drifts toward: dark mode, monospace, terminal.</p>
-    </li>
-
-    <li>
-      <h3>Fifteen sparks, deliberately shallow</h3>
-      <p>The article's Discover stage says go broad before going deep, and let your own reactions do the choosing. Claude listed fifteen design languages in one breath. The three Andrew picked are marked.</p>
+      <h3>Fifteen sparks</h3>
+      <p>Deliberately shallow, per the article. Three got picked.</p>
       <ul class="sparks">
         <li>Bulletin board</li>
         <li class="picked">Shotgun house</li>
@@ -64,38 +54,18 @@
         <li>Museum wall labels</li>
         <li>Playground</li>
       </ul>
-      <blockquote><p>Ones I love: Shotgun house. This is super interesting! Front porch. Very familier new orleans scene. Think Mardi Gras and Jazz Fest. Hanging outside with a drink. Hand painted shop sign. Again, very new orleans.</p><cite>Andrew</cite></blockquote>
     </li>
-
     <li>
-      <h3>Three picks turn out to be three layers</h3>
-      <blockquote><p>You didn't pick three competing looks, you picked three <em>layers</em>. Shotgun house is a structure, front porch is a scene, and shop sign is a type system. They could be three separate sites, or one site. That makes the parallel-sessions idea even better: run each alone, plus a fourth that combines them, and see which one surprises you.</p><cite>Claude</cite></blockquote>
-      <p>Claude sharpened each pick into a direction with its own trap named: a 3D dollhouse, stock Southern hospitality, a Western saloon. Then it asked three questions that would decide the prompts.</p>
-      <dl class="qa">
-        <div><dt>Does the shotgun house have to be read literally, or is it enough that locals feel it?</dt><dd>"I'm not sure :)" Claude chose literal, on the grounds that with four sessions running, the bold version is the one worth seeing.</dd></div>
-        <div><dt>Is the porch warm and quiet, or warm and lively?</dt><dd>"Warm and lively."</dd></div>
-        <div><dt>Does the whole page get lettered, or just headlines and one big sign?</dt><dd>"I think the whole page lettered will be distracting." Headlines only.</dd></div>
-      </dl>
-      <blockquote><p>Perhaps we do four prompts/version. One of each of these and then one trying to combine. I will build with Claude Code. Again, make sure you encapsulate guidance from the article.</p><cite>Andrew</cite></blockquote>
+      <h3>Three picks, three layers</h3>
+      <blockquote><p>You didn't pick three competing looks, you picked three <em>layers</em>. Shotgun house is a structure, front porch is a scene, and shop sign is a type system. Run each alone, plus a fourth that combines them, and see which one surprises you.</p><cite>Claude</cite></blockquote>
     </li>
-
     <li>
-      <h3>One brief, four prompts, a critic, and a polish list</h3>
-      <p>Claude wrote a shared brief (the CLAUDE.md every session reads first), one direction prompt per session, a critic-loop prompt, and a polish checklist for a human to run last. It kept a table of where each of the article's techniques landed.</p>
-      <table class="techniques">
-        <thead><tr><th>Technique from the article</th><th>Where it landed</th></tr></thead>
-        <tbody>
-          <tr><td>Seed strings for variety</td><td>Every direction prompt, step 1</td></tr>
-          <tr><td>Ambitious, specific prompts</td><td>Every direction prompt</td></tr>
-          <tr><td>Critic subagent feedback loop</td><td>Critic loop</td></tr>
-          <tr><td>Image generation</td><td>Setup plus every direction prompt</td></tr>
-          <tr><td>Video generation</td><td>Skipped for the proof of concept; noted for the polish pass</td></tr>
-          <tr><td>Cut what doesn't add value</td><td>Polish pass</td></tr>
-          <tr><td>Remove AI tells</td><td>Critic loop plus polish pass</td></tr>
-          <tr><td>Rewrite copy by hand</td><td>Shared brief plus polish pass</td></tr>
-        </tbody>
-      </table>
-      <p>Three calls Claude made on its own and flagged: the shotgun house goes literal; the tourist-trap list (beads, fleur-de-lis, jazz iconography, purple, green and gold, the French Quarter) is hard-banned in the brief; the critic loop stops after two iterations so no agent burns tokens chasing a score. Then it packaged the whole thing as a folder tree with a launcher, and Andrew ran it: four Claude Code sessions in four tmux windows, each on Fable 5.1, each generating its imagery through the OpenAI Codex CLI. Three of the windows died on launch when four instances started at the same instant. They were relaunched by hand.</p>
+      <h3>Three answers</h3>
+      <p>Literal shotgun house or just felt? Not sure, so Claude went literal. Porch quiet or lively? Lively. Whole page lettered? No, headlines only.</p>
+    </li>
+    <li>
+      <h3>The pack</h3>
+      <p>One shared brief, four direction prompts, a critic prompt, a polish checklist, and a launcher. Four Claude Code sessions ran in parallel, each generating its own imagery with the Codex CLI.</p>
     </li>
   </ol>
 </section>

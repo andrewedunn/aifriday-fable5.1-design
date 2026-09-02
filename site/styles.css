@@ -44,7 +44,6 @@ p { margin: 0 0 1em; }
 
 /* Masthead */
 .masthead { max-width: var(--wide); margin: 0 auto; padding: 3rem 0 2.5rem; }
-.dateline { color: var(--ink-2); margin-bottom: 1.5rem; }
 .dek { max-width: 54rem; font-size: 1.25rem; line-height: 1.5; margin-top: 1.5rem; }
 
 /* The wall: four frames in a row */

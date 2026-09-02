@@ -1,6 +1,6 @@
 # "Redesigning AI Friday website from scratch"
 
-Verbatim transcript of the claude.ai conversation (Claude Fable 5.1, "High" effort) that produced the brief and the four direction prompts. Captured 2026-09-02. Typos in Andrew's messages are left as typed. Claude's "thinking" blocks are omitted.
+Verbatim transcript of the claude.ai conversation (Claude Fable 5.1, "High" effort) that produced the brief and the four direction prompts. Captured 2026-09-02. Typos in Andrew's messages are left as typed. Claude's "thinking" blocks and the later housekeeping messages about launching the sessions are omitted.
 
 ---
 
@@ -155,88 +155,3 @@ Three decisions I made on your behalf, flag them if you disagree:
 Two things you'll need to fill in before pasting: the actual next meetup date and place in the shared brief, and 3–5 reference screenshots in a /refs folder for the critic (independent restaurant sites, festival posters, small-press covers; not AI community sites).
 
 When all four come back, send me the screenshots with your gut reactions and I'll do the next sharpening round from your taste.
-
----
-
-**Andrew**
-
-Can you just go ahead and launch these sessions nad build out the folders? Why do I need to do it? And the codex CLI is logged in so it can use that for access to open AI.
-
----
-
-**Claude** *(produced the zip "ai-friday-redesign")*
-
-I can build the whole folder tree, and I'll do that now. What I can't do is launch the sessions: Claude Code has to run on your machine, logged in as you, and your Codex CLI login lives there too. My sandbox has neither. So the deal is: I build every folder, brief, prompt, and a one-command launcher; you unzip and run one script.
-
-Unzip it anywhere and run ./launch.sh. It opens a tmux session with four windows, each already sitting in its own folder with Claude Code running its direction prompt. tmux attach -t aifriday to watch, Ctrl-b n to flip between them.
-
-What changed from the prompt pack:
-
-- Image generation now goes through your logged-in Codex CLI instead of an API key, so there's no .env.agents step. The brief tells each agent to stop and say so rather than fake textures with CSS if Codex isn't reachable.
-- Each folder has its own CLAUDE.md, PROMPT.md, and CRITIC.md. The agents are told to write a DESIGN-NOTE.md before coding, and to screenshot, write NOTES.md, and stop when done, so they don't wander into the critic loop on their own.
-- Meetup details are placeholders (Oct 2, venue TBD). Swap them in CLAUDE.md if you have real ones; otherwise leave them, they're fine for judging design.
-- ./launch.sh --critic relaunches all four on the critic step once the builds are done, or you can just type "Read CRITIC.md and follow it" in any session.
-
-The refs/ folder is optional but worth five minutes: a few screenshots of sites or posters you think are beautiful gives the critic a real baseline instead of a vibe.
-
-When they finish, send me the screenshots/ from each and your reactions.
-
----
-
-**Andrew**
-
-k
-
----
-
-**Claude**
-
-Sounds good. Come back with the screenshots whenever they're done.
-
----
-
-**Andrew**
-
-Ctrl-b n says no more sessions. Looks like just the shotgun house session is running
-
----
-
-**Claude**
-
-The other three windows almost certainly launched and died immediately, and tmux closes a window when its command exits, so you never saw the error. Most likely cause is four Claude Code instances starting at the exact same instant and tripping over each other on first-run setup; the first one wins.
-
-Fastest fix, without relaunching the running session. From the ai-friday-redesign folder:
-
-```bash
-for d in 02-front-porch 03-shop-sign 04-combined; do
-  tmux new-window -t aifriday -n "$d" -c "$PWD/$d"
-  tmux send-keys -t "aifriday:$d" 'claude "$(cat PROMPT.md)"' Enter
-  sleep 3
-done
-```
-
-That opens each window with a real shell first, then types the command into it, so if anything fails you'll see the error instead of a vanished window.
-
-(A launch.sh fix using the same pattern followed.)
-
----
-
-**Andrew**
-
-I think just combined neeeds to run now, I screwed that up. Gimme a command for that.
-
----
-
-**Claude**
-
-From the ai-friday-redesign folder:
-
-```bash
-tmux new-window -t aifriday -n 04-combined -c "$PWD/04-combined" && tmux send-keys -t aifriday:04-combined 'claude "$(cat PROMPT.md)"' Enter
-```
-
-If a window named 04-combined already exists from the earlier attempt, kill it first with tmux kill-window -t aifriday:04-combined, then run the line above.
-
----
-
-*(Two later messages about where the session log lives are omitted; they're housekeeping.)*
